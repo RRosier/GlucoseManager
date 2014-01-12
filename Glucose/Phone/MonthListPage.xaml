@@ -53,12 +53,26 @@
 
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,0,-12,0" ItemsSource="{Binding Measurements}" SelectionChanged="MainLongListSelector_SelectionChanged">
+            <phone:LongListSelector x:Name="MainLongListSelector" 
+                                    Margin="0,0,-12,0" 
+                                    ItemsSource="{Binding GroupedMeasurements}" 
+                                    IsGroupingEnabled="True"
+                                    SelectionChanged="MainLongListSelector_SelectionChanged">
+                <phone:LongListSelector.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent" Padding="5">
+                            <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Margin="0">
+                                <TextBlock Text="{Binding Key}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="32" Padding="6" 
+            FontFamily="{StaticResource PhoneFontFamilySemiLight}" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </Border>
+                    </DataTemplate>
+                </phone:LongListSelector.GroupHeaderTemplate>
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel VerticalAlignment="Top">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold"  Text="{Binding TimeString}" Width="80" />
+                                <TextBlock FontWeight="Bold" Text="{Binding TimeString}" Width="80" />
                                 <TextBlock TextWrapping="Wrap" Text="Value: " Margin="0,0,5,0"/>
                                 <TextBlock Text="{Binding GlucoseValue}" Width="130" />
                                 <TextBlock TextWrapping="Wrap" Text="Units:" Margin="0,0,5,0"/>
