@@ -36,6 +36,11 @@ namespace Rosier.Glucose.Phone
             }
         }
 
+        private void NewButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
+        }
+
         // Handle selection changed on LongListSelector
         private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

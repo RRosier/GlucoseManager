@@ -23,7 +23,11 @@ namespace Rosier.Glucose.Phone.ViewModels
             this.model = model;
         }
 
-        public MeasurementViewModel() { this.model = new Measurement(); }
+        public MeasurementViewModel() 
+        { 
+            this.model = new Measurement();
+            this.model.DateTime = DateTime.Now;
+        }
 
         public string TimeString
         {

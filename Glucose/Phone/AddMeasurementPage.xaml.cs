@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Rosier.Glucose.Phone.ViewModels;
 
 namespace Rosier.Glucose.Phone
 {
@@ -15,6 +16,17 @@ namespace Rosier.Glucose.Phone
         public AddMeasurementPage()
         {
             InitializeComponent();
+            DataContext = new MeasurementViewModel();
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void CheckButton_Click(object sender, EventArgs e)
+        {
+            var model = (DataContext as MeasurementViewModel).Model;
         }
     }
 }
