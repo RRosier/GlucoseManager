@@ -14,7 +14,7 @@ namespace Rosier.Glucose.Model
         /// <summary>
         /// Date and time when the value is taken.
         /// </summary>
-        public DateTimeOffset DateTime { get; set; }
+        public DateTime DateTime { get; set; }
         /// <summary>
         /// The measured glucose value.
         /// </summary>

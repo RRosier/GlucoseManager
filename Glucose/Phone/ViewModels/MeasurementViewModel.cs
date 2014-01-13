@@ -34,6 +34,26 @@ namespace Rosier.Glucose.Phone.ViewModels
             get { return this.model.DateTime.ToString("ddd d"); }
         }
 
+        public DateTime Date
+        {
+            get { return this.model.DateTime; }
+            set
+            {
+                this.model.DateTime = value.Date.Add(this.model.DateTime.TimeOfDay);
+                NotifyPropertyChanged();
+            }
+        }
+
+        public DateTime Time
+        {
+            get { return this.model.DateTime; }
+            set
+            {
+                this.model.DateTime = this.model.DateTime.Date.Add(value.TimeOfDay);
+                NotifyPropertyChanged();
+            }
+        }
+
         public int GlucoseValue 
         {
             get { return this.model.GlucoseValue; }
