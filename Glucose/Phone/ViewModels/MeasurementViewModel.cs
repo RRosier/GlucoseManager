@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone.ViewModels
 {
-    public class MeasurementViewModel : INotifyPropertyChanged
+    public class MeasurementViewModel : ViewModelBase
     {
         private Measurement model;
 
         public Measurement Model
         {
             get { return this.model; }
-            set { this.model = value; }
+            set { this.model = value; NotifyPropertyChanged(); }
         }
 
         public MeasurementViewModel(Measurement model)
@@ -37,7 +37,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         public int GlucoseValue 
         {
             get { return this.model.GlucoseValue; }
-            set { this.model.GlucoseValue = value; NotifyPropertyChanged("GlucoseValue"); } 
+            set { this.model.GlucoseValue = value; NotifyPropertyChanged(); } 
         }
         /// <summary>
         /// Amount of insuline units taken.
@@ -45,7 +45,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         public int InsulineUnits 
         {
             get { return this.model.InsulineUnits; }
-            set { this.model.InsulineUnits = value; NotifyPropertyChanged("InsulineUnits"); } 
+            set { this.model.InsulineUnits = value; NotifyPropertyChanged(); } 
         }
         /// <summary>
         /// Free comments about the measurement.
@@ -53,17 +53,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         public string Comments 
         {
             get { return this.model.Comments; }
-            set { this.model.Comments = value; NotifyPropertyChanged("Comments"); } 
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            set { this.model.Comments = value; NotifyPropertyChanged(); } 
         }
     }
 }

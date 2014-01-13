@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone.ViewModels
 {
-    public class MonthListViewModel : INotifyPropertyChanged
+    public class MonthListViewModel : ViewModelBase
     {
         public ObservableCollection<MeasurementViewModel> Measurements { get; set; }
 
@@ -35,7 +35,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         public void LoadData()
         {
             // Sample data; replace with real data
-            this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime=new DateTimeOffset(2014,1,12,10,12,0, TimeSpan.FromHours(1)), GlucoseValue=129, InsulineUnits=15,Comments=""}));
+            this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 12, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue=129, InsulineUnits=15,Comments=""}));
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 12, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 12, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 12, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
@@ -54,16 +54,6 @@ namespace Rosier.Glucose.Phone.ViewModels
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 9, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 9, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             this.Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTimeOffset(2014, 1, 9, 10, 12, 0, TimeSpan.FromHours(1)), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }
