@@ -1,9 +1,10 @@
-﻿<phone:PhoneApplicationPage
+﻿<pages:MonthListTypedBasePage
     x:Class="Rosier.Glucose.Phone.MonthListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:pages="clr-namespace:Rosier.Glucose.Phone.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Converters="clr-namespace:Rosier.Glucose.Phone.Converters"
@@ -14,10 +15,10 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
-    
-    <phone:PhoneApplicationPage.Resources>
+
+    <pages:MonthListTypedBasePage.Resources>
         <Converters:StringLengthVisibilityConverter x:Key="StringLengthVisibilityConverter" />
-    </phone:PhoneApplicationPage.Resources>
+    </pages:MonthListTypedBasePage.Resources>
     
     <!--Data context is set to sample data above and LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -95,10 +96,10 @@
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
     </Grid>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
+    <pages:MonthListTypedBasePage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1.0">
             <!--<shell:ApplicationBarIconButton IconUri="Assets/AppBar/download.png" Text="load" Click="LoadButton_Click" />-->
             <shell:ApplicationBarIconButton IconUri="Assets/AppBar/new.png" Text="new" Click="NewButton_Click" />
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-</phone:PhoneApplicationPage>
+    </pages:MonthListTypedBasePage.ApplicationBar>
+</pages:MonthListTypedBasePage>

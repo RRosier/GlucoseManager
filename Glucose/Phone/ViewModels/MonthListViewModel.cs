@@ -11,21 +11,30 @@ namespace Rosier.Glucose.Phone.ViewModels
 {
     public class MonthListViewModel : ViewModelBase
     {
+        private ObservableCollection<KeyedList<string, MeasurementViewModel>> groupedMeasurements = null;
+
         public MonthListViewModel()
         {
         }
 
-        public List<KeyedList<string, MeasurementViewModel>> GroupedMeasurements
+        public bool SetReload { get; set; }
+
+        public ObservableCollection<KeyedList<string, MeasurementViewModel>> GroupedMeasurements
         {
             get
             {
-                var groupedValues =
-                    from value in base.Measurements
-                    orderby value.Model.DateTime descending
-                    group value by value.DayString into valuesByDay
-                    select new KeyedList<string, MeasurementViewModel>(valuesByDay);
+                if (this.groupedMeasurements == null || SetReload)
+                {
+                    var groupedValues =
+                        from value in base.Measurements
+                        orderby value.Model.DateTime descending
+                        group value by value.DayString into valuesByDay
+                        select new KeyedList<string, MeasurementViewModel>(valuesByDay);
+                    this.groupedMeasurements = new ObservableCollection<KeyedList<string, MeasurementViewModel>>(groupedValues);
+                    SetReload = false;
+                }
 
-                return new List<KeyedList<string, MeasurementViewModel>>(groupedValues);
+                return this.groupedMeasurements;
             }
         }
     }

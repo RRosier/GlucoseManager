@@ -9,19 +9,21 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Rosier.Glucose.Phone.Resources;
 using Rosier.Glucose.Phone.ViewModels;
+using Rosier.Glucose.Phone.Pages;
 
 namespace Rosier.Glucose.Phone
 {
-    public partial class MonthListPage : PhoneApplicationPage
+    public partial class MonthListPage : MonthListTypedBasePage
     {
         // Constructor
         public MonthListPage()
+            : base()
         {
             InitializeComponent();
 
             // Set the data context of the LongListSelector control to the sample data
-            var vm = new MonthListViewModel();
-            DataContext = vm;// App.ViewModel;
+            //var vm = new MonthListViewModel();
+            //DataContext = vm;// App.ViewModel;
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
@@ -29,10 +31,13 @@ namespace Rosier.Glucose.Phone
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+            // clear collection so that it gets rebound with new data
+            ViewModel.SetReload = true;
+            //DataContext = ViewModel;
+            //if (!App.ViewModel.IsDataLoaded)
+            //{
+            //    App.ViewModel.LoadData();
+            //}
         }
 
         private void NewButton_Click(object sender, EventArgs e)

@@ -109,12 +109,16 @@
     </Compile>
     <Compile Include="Models\Measurement.cs" />
     <Compile Include="Models\MonthSummary.cs" />
+    <Compile Include="Pages\AddMeasurementTypedBasePage.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\MonthListTypedBasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddMeasurementViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\KeyedList.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

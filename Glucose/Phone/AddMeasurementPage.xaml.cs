@@ -9,14 +9,14 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Rosier.Glucose.Phone.ViewModels;
 
-namespace Rosier.Glucose.Phone
+namespace Rosier.Glucose.Phone.Pages
 {
-    public partial class AddMeasurementPage : PhoneApplicationPage
+    public partial class AddMeasurementPage : AddMeasurementTypedBasePage
     {
         public AddMeasurementPage()
+            :base()
         {
             InitializeComponent();
-            DataContext = new MeasurementViewModel();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -26,7 +26,8 @@ namespace Rosier.Glucose.Phone
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
-            var model = (DataContext as MeasurementViewModel).Model;
+            ViewModel.AddMeasurement(ViewModel.Measurement);
+            NavigationService.GoBack();
         }
     }
 }
