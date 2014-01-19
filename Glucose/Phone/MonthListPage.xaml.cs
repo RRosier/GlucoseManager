@@ -32,7 +32,7 @@ namespace Rosier.Glucose.Phone
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // clear collection so that it gets rebound with new data
-            ViewModel.SetReload = true;
+            //ViewModel.GroupedMeasurements = null;
             //DataContext = ViewModel;
             //if (!App.ViewModel.IsDataLoaded)
             //{
@@ -42,9 +42,14 @@ namespace Rosier.Glucose.Phone
 
         private void NewButton_Click(object sender, EventArgs e)
         {
+
             NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
         }
 
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            DataContext = ViewModel;
+        }
         // Handle selection changed on LongListSelector
         private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

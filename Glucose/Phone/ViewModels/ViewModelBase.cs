@@ -15,7 +15,16 @@ namespace Rosier.Glucose.Phone.ViewModels
     /// </summary>
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        private ObservableCollection<MeasurementViewModel> measurements;
+        private ObservableCollection<MeasurementViewModel> measurements = new ObservableCollection<MeasurementViewModel>();
+
+        public ViewModelBase()
+        {
+            this.Measurements.CollectionChanged += Measurements_CollectionChanged;
+        }
+
+        protected virtual void Measurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+        }
 
         /// <summary>
         /// Gets the month measurements.

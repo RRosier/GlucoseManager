@@ -51,6 +51,7 @@ namespace Rosier.Glucose.Phone
                 if (this.monthMeasurements == null)
                 {
                     this.monthMeasurements = new ObservableCollection<MeasurementViewModel>();
+                    this.monthMeasurements.CollectionChanged += monthMeasurements_CollectionChanged;
                     this.LoadData();
                 }
 
@@ -108,6 +109,11 @@ namespace Rosier.Glucose.Phone
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+        }
+
+        private void monthMeasurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            var s = e.Action;
         }
 
         public void LoadData(string month = "")
