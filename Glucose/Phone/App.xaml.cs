@@ -119,9 +119,9 @@ namespace Rosier.Glucose.Phone
         public void LoadData(string month = "")
         {
             // Sample data; replace with real data
+            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "Some comment" }));
             Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
+            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "Some larger comment to spam multiple rows in the UI" }));
             Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
             Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 13, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));

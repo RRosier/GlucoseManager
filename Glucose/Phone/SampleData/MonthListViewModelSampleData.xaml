@@ -7,7 +7,7 @@
     <vm:MonthListViewModel.Measurements>
         <vm:MeasurementViewModel>
             <vm:MeasurementViewModel.Model>
-                <m:Measurement DateTime="2014-01-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments=""/>
+                <m:Measurement DateTime="2014-01-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
             </vm:MeasurementViewModel.Model>
         </vm:MeasurementViewModel>
         <vm:MeasurementViewModel>

@@ -46,10 +46,6 @@ namespace Rosier.Glucose.Phone
             NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
         }
 
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            DataContext = ViewModel;
-        }
         // Handle selection changed on LongListSelector
         private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

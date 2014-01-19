@@ -61,27 +61,56 @@
                                     SelectionChanged="MainLongListSelector_SelectionChanged">
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent" Padding="5">
+                        <Border Background="Transparent" Padding="0">
                             <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Margin="0">
-                                <TextBlock Text="{Binding Key}" Foreground="{StaticResource PhoneForegroundBrush}" FontSize="32" Padding="6" 
-            FontFamily="{StaticResource PhoneFontFamilySemiLight}" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Key}" 
+                                           Padding="5, 0, 5, 0" 
+                                           Style="{StaticResource PhoneTextGroupHeaderStyle}"
+                                           Foreground="{StaticResource PhoneForegroundBrush}"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center" 
+                                           />
                             </Border>
                         </Border>
                     </DataTemplate>
                 </phone:LongListSelector.GroupHeaderTemplate>
                 <phone:LongListSelector.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel VerticalAlignment="Top">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Text="{Binding TimeString}" Width="80" />
-                                <TextBlock TextWrapping="Wrap" Text="Value: " Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding GlucoseValue}" Width="130" />
-                                <TextBlock TextWrapping="Wrap" Text="Units:" Margin="0,0,5,0"/>
-                                <TextBlock Text="{Binding InsulineUnits}" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.RowSpan="2" Grid.Row="0" Grid.Column="0" 
+                                       Text="{Binding TimeString}"
+                                       FontSize="{StaticResource PhoneFontSizeMedium}"
+                                       Padding="17,0,0,0"/>
+                            
+                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                                <TextBlock TextWrapping="Wrap" Text="Value: " Margin="0,0,5,0"
+                                           FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                                <TextBlock Text="{Binding GlucoseValue}" FontSize="{StaticResource PhoneFontSizeMedium}" />
                             </StackPanel>
-                            <TextBlock Text="{Binding Comments}" Padding="80,0,10,0"
-                           Visibility="{Binding Comments, Converter={StaticResource StringLengthVisibilityConverter}}"/>
-                        </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="0">
+                                <TextBlock TextWrapping="Wrap" Text="Units:" Margin="0,0,5,0"
+                                           FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                                <TextBlock Text="{Binding InsulineUnits}"
+                                           FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding Comments}" Padding="0,0,12,0"
+                               Visibility="{Binding Comments, Converter={StaticResource StringLengthVisibilityConverter}}"
+                                       Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="2"
+                                       TextAlignment="Left" TextWrapping="Wrap" 
+                                       FontSize="{StaticResource PhoneFontSizeSmall}"/>
+                        </Grid>
                     </DataTemplate>
                 </phone:LongListSelector.ItemTemplate>
             </phone:LongListSelector>
@@ -100,7 +129,6 @@
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1.0">
             <!--<shell:ApplicationBarIconButton IconUri="Assets/AppBar/download.png" Text="load" Click="LoadButton_Click" />-->
             <shell:ApplicationBarIconButton IconUri="Assets/AppBar/new.png" Text="new" Click="NewButton_Click" />
-            <shell:ApplicationBarIconButton IconUri="Assets/AppBar/download.png" Text="refresh" Click="RefreshButton_Click" />
         </shell:ApplicationBar>
     </pages:MonthListTypedBasePage.ApplicationBar>
 </pages:MonthListTypedBasePage>
