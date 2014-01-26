@@ -10,6 +10,7 @@ using Rosier.Glucose.Phone.Resources;
 using Rosier.Glucose.Phone.ViewModels;
 using System.Collections.ObjectModel;
 using Rosier.Glucose.Model;
+using Rosier.Glucose.Phone.Storage;
 
 namespace Rosier.Glucose.Phone
 {
@@ -52,7 +53,9 @@ namespace Rosier.Glucose.Phone
                 {
                     this.monthMeasurements = new ObservableCollection<MeasurementViewModel>();
                     this.monthMeasurements.CollectionChanged += monthMeasurements_CollectionChanged;
-                    this.LoadData();
+                    //this.LoadData();
+
+                    var thisMonthsMeasurements = StorageManager.LoadMeasurementsAsync("01-2014").Result;
                 }
 
                 return this.monthMeasurements;

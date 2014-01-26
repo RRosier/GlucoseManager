@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rosier.Glucose.Phone.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,10 @@ namespace Rosier.Glucose.Phone.ViewModels
             this.Measurement = new MeasurementViewModel();
         }
 
-        public void AddMeasurement(MeasurementViewModel measurementViewModel)
+        public async Task AddMeasurement(MeasurementViewModel measurementViewModel)
         {
+            await StorageManager.SaveMeasurementsAsync(new[] { Measurement.Model });
+            // only add to view model when month corresponds
             base.Measurements.Add(this.Measurement);
         }
     }
