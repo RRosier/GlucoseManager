@@ -22,20 +22,26 @@ namespace Rosier.Glucose.Phone.Storage
             var filepath = Path.Combine(MonthFolder, month) + ".json";
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
+
             if (isolatedStorageFile.FileExists(filepath))
             {
-                var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
-                using (var reader = new StreamReader(fileStream))
+                await Task.Factory.StartNew(async () =>
                 {
-                    var fileContent = await reader.ReadToEndAsync();
-                    var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
-
-                    foreach (var m in models)
+                    var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
+                    using (var reader = new StreamReader(fileStream))
                     {
-                        measurements.Add(new MeasurementViewModel(m));
+                        var fileContent = await reader.ReadToEndAsync();
+                        var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
+
+                        foreach (var m in models)
+                        {
+                            measurements.Add(new MeasurementViewModel(m));
+                        }
                     }
-                }
+
+                });
             }
+
 
             return measurements;
         }

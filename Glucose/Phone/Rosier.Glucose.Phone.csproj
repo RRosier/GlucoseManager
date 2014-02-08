@@ -101,6 +101,10 @@
     <Compile Include="DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPanorama.xaml.cs">
+      <DependentUpon>MainPanorama.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Summary.cs" />
     <Compile Include="MonthListPage.xaml.cs">
       <DependentUpon>MonthListPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +115,7 @@
     <Compile Include="Models\MonthSummary.cs" />
     <Compile Include="Pages\AddMeasurementTypedBasePage.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\MainTypedPage.cs" />
     <Compile Include="Pages\MonthListTypedBasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
@@ -125,6 +130,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MeasurementViewModel.cs" />
     <Compile Include="ViewModels\MonthListViewModel.cs" />
+    <Compile Include="ViewModels\MonthSummaryViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +145,10 @@
     <Page Include="DetailsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainPanorama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonthListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +168,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -173,6 +184,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Background.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -202,6 +214,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>

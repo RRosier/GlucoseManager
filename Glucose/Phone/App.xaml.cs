@@ -51,11 +51,11 @@ namespace Rosier.Glucose.Phone
             {
                 if (this.monthMeasurements == null)
                 {
-                    this.monthMeasurements = new ObservableCollection<MeasurementViewModel>();
-                    this.monthMeasurements.CollectionChanged += monthMeasurements_CollectionChanged;
-                    //this.LoadData();
+                    var measurementsTask = StorageManager.LoadMeasurementsAsync("01-2014");
+                    measurementsTask.Wait();
 
-                    var thisMonthsMeasurements = StorageManager.LoadMeasurementsAsync("01-2014").Result;
+                    this.monthMeasurements = new ObservableCollection<MeasurementViewModel>(measurementsTask.Result);
+                    this.monthMeasurements.CollectionChanged += monthMeasurements_CollectionChanged;
                 }
 
                 return this.monthMeasurements;
@@ -154,10 +154,10 @@ namespace Rosier.Glucose.Phone
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
+            //if (!App.ViewModel.IsDataLoaded)
+            //{
+            //    App.ViewModel.LoadData();
+            //}
         }
 
         // Code to execute when the application is deactivated (sent to background)
