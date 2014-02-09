@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
@@ -305,6 +306,15 @@ namespace Rosier.Glucose.Phone
         {
             var data = await StorageManager.ReadSummaryDataAsync();
             SummaryData = new ObservableCollection<MonthSummary>(data);
+        }
+
+        /// <summary>
+        /// Saves the summary data asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        internal static async Task SaveSummaryDataAsync()
+        {
+            await StorageManager.WriteSummaryDataAsync(SummaryData);
         }
     }
 }

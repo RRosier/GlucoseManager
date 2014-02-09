@@ -10,6 +10,7 @@ namespace Rosier.Glucose.Phone.ViewModels
     {
         public MainViewModel()
         {
+            this.Summary = new ObservableCollection<MonthSummaryViewModel>();
         }
 
         public ObservableCollection<MonthSummaryViewModel> Summary { get; set; }
@@ -19,12 +20,13 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         public override async void LoadData()
         {
+            this.Summary.Clear();
+
             if (App.SummaryData == null)
             {
                 await App.LoadSummaryDataAsync();
             }
 
-            this.Summary = new ObservableCollection<MonthSummaryViewModel>();
             foreach (var s in App.SummaryData)
             {
                 this.Summary.Add(new MonthSummaryViewModel(s));

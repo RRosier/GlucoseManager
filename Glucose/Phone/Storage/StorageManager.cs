@@ -99,15 +99,15 @@ namespace Rosier.Glucose.Phone.Storage
 
             if (isolatedStorageFile.FileExists(SummaryFile))
             {
-                await Task.Factory.StartNew(async () =>
+                //await Task.Factory.StartNew(async () =>
+                //{
+                var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Open);
+                using (var reader = new StreamReader(fileStream))
                 {
-                    var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Open);
-                    using (var reader = new StreamReader(fileStream))
-                    {
-                        var fileContent = await reader.ReadToEndAsync();
-                        data = await JsonConvert.DeserializeObjectAsync<List<MonthSummary>>(fileContent);
-                    }
-                });
+                    var fileContent = await reader.ReadToEndAsync();
+                    data = await JsonConvert.DeserializeObjectAsync<List<MonthSummary>>(fileContent);
+                }
+                //});
             }
 
             return data;
