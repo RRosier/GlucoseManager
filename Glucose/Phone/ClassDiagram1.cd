@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Rosier.Glucose.Phone.Pages.AddMeasurementPage" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddMeasurementPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Pages.AddMeasurementTypedBasePage" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\AddMeasurementTypedBasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Pages.BasePage&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\BasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Pages.MonthListTypedBasePage" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\MonthListTypedBasePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.App" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAgCSAIAAAQhAAAIAEQAAAAEAAAEQAAAAAQAIIEAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.DetailsPage" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DetailsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.LocalizedStrings" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>LocalizedStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.MainPage" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.MainPanorama" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPanorama.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.MonthListPage" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>MonthListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Converters.StringLengthVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\StringLengthVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rosier.Glucose.Model.Measurement" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAIAA=</HashCode>
+      <FileName>Models\Measurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Model.MonthSummary" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAgAABAAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MonthSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Models.Summary" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Summary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Resources.AppResources" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgCAAEAAAABEIAAAQAAAAAAAAAAAAIAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.Storage.StorageManager" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAIAAAAAAAAAAAgAACAAAAAAAAAAgA=</HashCode>
+      <FileName>Storage\StorageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.AddMeasurementViewModel" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ViewModels\AddMeasurementViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.ItemViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIACAIAAAAAAgYAAAABAAAAAgAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.KeyedList&lt;TKey, TItem&gt;" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\KeyedList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.MeasurementViewModel" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAgAAAAAAAAAAAAAAAAAABAggAAAAIIQA=</HashCode>
+      <FileName>ViewModels\MeasurementViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.MonthListViewModel" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MonthListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rosier.Glucose.Phone.ViewModels.ViewModelBase" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAAAAAAAAgAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

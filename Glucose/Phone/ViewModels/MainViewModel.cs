@@ -10,7 +10,6 @@ namespace Rosier.Glucose.Phone.ViewModels
     {
         public MainViewModel()
         {
-            this.Summary = new ObservableCollection<MonthSummaryViewModel>();
         }
 
         public ObservableCollection<MonthSummaryViewModel> Summary { get; set; }
@@ -20,11 +19,18 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         public override async void LoadData()
         {
+            if (this.Summary == null)
+            {
+                this.Summary = new ObservableCollection<MonthSummaryViewModel>();
+            }
+
             this.Summary.Clear();
 
             if (App.SummaryData == null)
             {
                 await App.LoadSummaryDataAsync();
+                // TODO: pass in the event
+                App.SummaryData.CollectionChanged += SummaryData_CollectionChanged;
             }
 
             foreach (var s in App.SummaryData)
@@ -33,6 +39,12 @@ namespace Rosier.Glucose.Phone.ViewModels
             }
 
             this.IsDataLoaded = true;
+        }
+
+        void SummaryData_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            this.LoadData();
+            //NotifyPropertyChanged("Summary");
         }
     }
 }
