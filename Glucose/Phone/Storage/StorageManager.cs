@@ -15,6 +15,7 @@ namespace Rosier.Glucose.Phone.Storage
     public class StorageManager
     {
         private const string MonthFolder = "measurements";
+        private const string SummaryFile = "summary.json";
 
         public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(string month)
         {
@@ -84,6 +85,49 @@ namespace Rosier.Glucose.Phone.Storage
             if (!isolatedStorageFile.DirectoryExists(MonthFolder))
             {
                 isolatedStorageFile.CreateDirectory(MonthFolder);
+            }
+        }
+
+        /// <summary>
+        /// Reads the summary data asynchronous from the local storage.
+        /// </summary>
+        /// <returns>Enumerable of the stored summary data.</returns>
+        internal static async Task<IEnumerable<MonthSummary>> ReadSummaryDataAsync()
+        {
+            var data = new List<MonthSummary>();
+            var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+            if (isolatedStorageFile.FileExists(SummaryFile))
+            {
+                await Task.Factory.StartNew(async () =>
+                {
+                    var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Open);
+                    using (var reader = new StreamReader(fileStream))
+                    {
+                        var fileContent = await reader.ReadToEndAsync();
+                        data = await JsonConvert.DeserializeObjectAsync<List<MonthSummary>>(fileContent);
+                    }
+                });
+            }
+
+            return data;
+        }
+
+        /// <summary>
+        /// Writes the summary data asynchronous to the local storage.
+        /// </summary>
+        /// <returns>
+        /// <see cref="Task"/> object.
+        /// </returns>
+        internal static async Task WriteSummaryDataAsync(IEnumerable<MonthSummary> data)
+        {
+            var serializedString = await JsonConvert.SerializeObjectAsync(data);
+            var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+            using (var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            using (var writer = new StreamWriter(fileStream))
+            {
+                await writer.WriteAsync(serializedString);
             }
         }
     }

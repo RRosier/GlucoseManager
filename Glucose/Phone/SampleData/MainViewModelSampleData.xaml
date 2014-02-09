@@ -2,32 +2,34 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vm="clr-namespace:Rosier.Glucose.Phone.ViewModels"
-    xmlns:m="clr-namespace:Rosier.Glucose.Model">
+    xmlns:m="clr-namespace:Rosier.Glucose.Model"
+    CurrentMonthAverageGlucose="125"
+    CurrentMonthAverageInsuline="13">
 
     <vm:MainViewModel.Summary>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="02-2014" AverageInsuline="12" AverageGlucose="120"/>
+                <m:MonthSummary Month="02-2014" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="01-2014" AverageInsuline="15" AverageGlucose="145"/>
+                <m:MonthSummary Month="01-2014" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="12-2013" AverageInsuline="17" AverageGlucose="160"/>
+                <m:MonthSummary Month="12-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="11-2013" AverageInsuline="8" AverageGlucose="105"/>
+                <m:MonthSummary Month="11-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="10-2013" AverageInsuline="12" AverageGlucose="120"/>
+                <m:MonthSummary Month="10-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
     </vm:MainViewModel.Summary>

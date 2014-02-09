@@ -22,6 +22,34 @@ namespace Rosier.Glucose.Phone.ViewModels
             this.Measurements.CollectionChanged += Measurements_CollectionChanged;
         }
 
+        /// <summary>
+        /// Gets the current <see cref="Application"/> instance.
+        /// </summary>
+        /// <value>
+        /// The current <see cref="Application"/> instance.
+        /// </value>
+        protected App App
+        {
+            get { return (App)Application.Current; }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether data of this ViewModel is loaded.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if data is loaded; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDataLoaded
+        {
+            get;
+            protected set;
+        }
+
+        /// <summary>
+        /// When override performs actions to load this views data.
+        /// </summary>
+        public virtual void LoadData() { }
+
         protected virtual void Measurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
         }
@@ -36,7 +64,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
             get
             {
-                if(!DesignerProperties.IsInDesignTool)
+                if (!DesignerProperties.IsInDesignTool)
                     this.measurements = ((App)Application.Current).Measurements;
                 return this.measurements;
             }

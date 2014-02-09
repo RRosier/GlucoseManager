@@ -20,7 +20,7 @@ namespace Rosier.Glucose.Phone
             InitializeComponent();
 
             // Set the data context of the LongListSelector control to the sample data
-            DataContext = App.ViewModel;
+            //DataContext = App.ViewModel;
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();

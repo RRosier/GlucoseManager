@@ -11,6 +11,7 @@ using Rosier.Glucose.Phone.ViewModels;
 using System.Collections.ObjectModel;
 using Rosier.Glucose.Model;
 using Rosier.Glucose.Phone.Storage;
+using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone
 {
@@ -20,24 +21,6 @@ namespace Rosier.Glucose.Phone
     public partial class App : Application
     {
         private ObservableCollection<MeasurementViewModel> monthMeasurements = null;
-
-        private static MainViewModel viewModel = null;
-
-        /// <summary>
-        /// A static ViewModel used by the views to bind against.
-        /// </summary>
-        /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Delay creation of the view model until necessary
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
-
-                return viewModel;
-            }
-        }
 
         /// <summary>
         /// Gets the measurements of the current month.
@@ -61,6 +44,8 @@ namespace Rosier.Glucose.Phone
                 return this.monthMeasurements;
             }
         }
+
+        public static ObservableCollection<MonthSummary> SummaryData { get; private set; }
 
         /// <summary>
         /// Gets or sets the current month.
@@ -310,6 +295,16 @@ namespace Rosier.Glucose.Phone
 
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Loads the summary data asynchronous.
+        /// </summary>
+        /// <returns><see cref="Task"/> object.</returns>
+        internal static async Task LoadSummaryDataAsync()
+        {
+            var data = await StorageManager.ReadSummaryDataAsync();
+            SummaryData = new ObservableCollection<MonthSummary>(data);
         }
     }
 }
