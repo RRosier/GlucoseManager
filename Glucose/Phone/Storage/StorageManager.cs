@@ -124,7 +124,7 @@ namespace Rosier.Glucose.Phone.Storage
             var serializedString = await JsonConvert.SerializeObjectAsync(data);
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
-            using (var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            using (var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Create, FileAccess.ReadWrite))
             using (var writer = new StreamWriter(fileStream))
             {
                 await writer.WriteAsync(serializedString);
