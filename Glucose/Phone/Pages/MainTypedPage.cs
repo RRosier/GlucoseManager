@@ -6,7 +6,6 @@ namespace Rosier.Glucose.Phone.Pages
     {
         public MainTypedBasePage()
         {
-            this.ViewModel = new MainViewModel();
         }
     }
 }
