@@ -13,13 +13,13 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
         }
 
-        public ObservableCollection<MonthSummaryViewModel> Summary { get; set; }
+        public MonthSummaryObservableCollection Summary { get; set; }
 
         public int CurrentMonthAverageGlucose
         {
             get
             {
-                if (this.Summary.Count == 0)
+                if (this.Summary == null || this.Summary.Count == 0)
                     return 0;
 
                 return this.Summary.First().Glucose;
@@ -30,7 +30,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
             get
             {
-                if (this.Summary.Count == 0)
+                if (this.Summary == null || this.Summary.Count == 0)
                     return 0;
 
                 return this.Summary.First().Insuline;
@@ -41,21 +41,12 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
             if (this.Summary == null)
             {
-                this.Summary = new ObservableCollection<MonthSummaryViewModel>();
-            }
-
-            this.Summary.Clear();
-
-            if (App.SummaryData == null)
-            {
                 await App.LoadSummaryDataAsync();
+                this.Summary = App.SummaryData;
                 // TODO: pass in the event
                 App.SummaryData.CollectionChanged += SummaryData_CollectionChanged;
-            }
-
-            foreach (var s in App.SummaryData)
-            {
-                this.Summary.Add(new MonthSummaryViewModel(s));
+                NotifyPropertyChanged("CurrentMonthAverageGlucose");
+                NotifyPropertyChanged("CurrentMonthAverageInsuline");
             }
 
             this.IsDataLoaded = true;
@@ -63,8 +54,9 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         void SummaryData_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            this.LoadData();
-            //NotifyPropertyChanged("Summary");
+            //this.LoadData();
+            NotifyPropertyChanged("CurrentMonthAverageGlucose");
+            NotifyPropertyChanged("CurrentMonthAverageInsuline");
         }
     }
 }

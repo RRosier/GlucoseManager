@@ -46,7 +46,7 @@ namespace Rosier.Glucose.Phone
             }
         }
 
-        public static ObservableCollection<MonthSummary> SummaryData { get; private set; }
+        public static MonthSummaryObservableCollection SummaryData { get; private set; }
 
         /// <summary>
         /// Gets or sets the current month.
@@ -309,16 +309,41 @@ namespace Rosier.Glucose.Phone
         internal static async Task LoadSummaryDataAsync()
         {
             var data = await StorageManager.ReadSummaryDataAsync();
-            SummaryData = new ObservableCollection<MonthSummary>(data);
+            var vData = data.Select(d => new MonthSummaryViewModel(d));
+            SummaryData = new MonthSummaryObservableCollection(vData);
+        }
+
+        /// <summary>
+        /// Updates the summary data.
+        /// </summary>
+        /// <param name="measurement">The measurement.</param>
+        /// <returns></returns>
+        internal static async Task UpdateSummary(Measurement measurement)
+        {
+            // TODO-rro: don't use string for format, use a real DateTime set on 1st of the month
+            var month = measurement.DateTime.ToString("yyyy-MM");
+
+            var monthSummary = SummaryData.Where(sd => sd.DisplayMonth == month).SingleOrDefault();
+            if (monthSummary != null)
+            {
+                monthSummary.AddMeasurement(measurement);
+            }
+            else
+            {
+                var viewmodel = new MonthSummaryViewModel(measurement);
+                SummaryData.Add(viewmodel);
+            }
+
+            await SaveSummaryDataAsync();
         }
 
         /// <summary>
         /// Saves the summary data asynchronous.
         /// </summary>
         /// <returns></returns>
-        internal static async Task SaveSummaryDataAsync()
+        private static async Task SaveSummaryDataAsync()
         {
-            await StorageManager.WriteSummaryDataAsync(SummaryData);
+            await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
         }
     }
 }

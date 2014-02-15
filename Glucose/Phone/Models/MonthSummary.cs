@@ -17,6 +17,7 @@ namespace Rosier.Glucose.Model
         /// <value>
         /// The month.
         /// </value>
+        // TODO-rro: don't use string for format, use a real DateTime set on 1st of the month
         public string Month { get; set; }
         /// <summary>
         /// Gets or sets the total measures for this month.
@@ -39,20 +40,5 @@ namespace Rosier.Glucose.Model
         /// The total glucose.
         /// </value>
         public int TotalGlucose { get; set; }
-
-        /// <summary>
-        /// Gets the average insuline intake for this month.
-        /// </summary>
-        /// <value>
-        /// The average insuline.
-        /// </value>
-        public int AverageInsuline { get { return TotalInsuline / TotalMeasures; } }
-        /// <summary>
-        /// Gets the average glucose measured for this month.
-        /// </summary>
-        /// <value>
-        /// The average glucose.
-        /// </value>
-        public int AverageGlucose { get { return TotalGlucose / TotalMeasures; } }
     }
 }

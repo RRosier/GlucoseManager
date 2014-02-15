@@ -33,21 +33,7 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         private async Task UpdateSummary()
         {
-            var month = Measurement.Date.ToString("MM-yyyy");
-
-            var monthSummary = App.SummaryData.Where(sd => sd.Month == month).SingleOrDefault();
-            if (monthSummary != null)
-            {
-                monthSummary.TotalMeasures++;
-                monthSummary.TotalGlucose += Measurement.GlucoseValue;
-                monthSummary.TotalInsuline += Measurement.InsulineUnits;
-            }
-            else
-            {
-                App.SummaryData.Add(new Model.MonthSummary { Month = month, TotalMeasures = 1, TotalGlucose = Measurement.GlucoseValue, TotalInsuline = Measurement.InsulineUnits });
-            }
-
-            await App.SaveSummaryDataAsync();
+            await App.UpdateSummary(this.Measurement.Model);
         }
     }
 }

@@ -51,17 +51,10 @@ namespace Rosier.Glucose.Phone.Storage
         {
             var tasks = new List<Task>();
             var monthMeasurements = from m in measurements
-                                    group m by m.DateTime.ToString("MM-yyyy") into month
+                                    group m by m.DateTime.ToString("yyyy-MM") into month
                                     select new { Month = month.Key, Measurements = month };
 
             await Task.WhenAll(monthMeasurements.Select(mm => SaveMonthMeasurementsAsync(mm.Measurements, mm.Month)).ToArray());
-
-            //foreach (var mm in monthMeasurements)
-            //{
-            //    tasks.Add(SaveMonthMeasurementsAsync(mm.Measurements, mm.Month));
-            //}
-
-            //return Task.WhenAll(tasks);// tasks.ToArray();// Task.WaitAll(tasks.ToArray());
         }
 
         private async static Task SaveMonthMeasurementsAsync(IEnumerable<Measurement> measurements, string month)

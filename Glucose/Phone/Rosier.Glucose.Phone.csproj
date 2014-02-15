@@ -130,6 +130,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MeasurementViewModel.cs" />
     <Compile Include="ViewModels\MonthListViewModel.cs" />
+    <Compile Include="ViewModels\MonthSummaryObservableCollection.cs" />
     <Compile Include="ViewModels\MonthSummaryViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
