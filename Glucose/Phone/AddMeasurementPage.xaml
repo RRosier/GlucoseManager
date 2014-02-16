@@ -32,18 +32,37 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" 
               DataContext="{Binding Measurement}">
-            <StackPanel>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
                 <TextBlock Text="Date" />
-                <toolkit:DatePicker Value="{Binding Date, Mode=TwoWay}" />
-                <TextBlock Text="Time" />
-                <toolkit:TimePicker Value="{Binding Time, Mode=TwoWay}" />
-                <TextBlock Text="Value" />
-                <TextBox Text="{Binding GlucoseValue, Mode=TwoWay}" InputScope="Number" />
-                <TextBlock Text="Units" />
-                <TextBox Text="{Binding InsulineUnits, Mode=TwoWay}" InputScope="Number" />
-                <TextBlock Text="Comments" />
-                <TextBox Text="{Binding Comments, Mode=TwoWay}" />
-            </StackPanel>
+                <toolkit:DatePicker Value="{Binding Date, Mode=TwoWay}"
+                                    Grid.Column="1"/>
+                <TextBlock Text="Time" Grid.Row="1" />
+                <toolkit:TimePicker Value="{Binding Time, Mode=TwoWay}"
+                                    Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="Value" Grid.Row="2" Grid.Column="0" />
+                <TextBox Text="{Binding GlucoseValue, Mode=TwoWay}" InputScope="Number"
+                         Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="Units" Grid.Row="3" />
+                <TextBox Text="{Binding InsulineUnits, Mode=TwoWay}" 
+                         InputScope="Number"
+                         Grid.Row="3" Grid.Column="1"/>
+                <TextBlock Text="Comments" Grid.Row="4" Grid.ColumnSpan="2" />
+                <TextBox Text="{Binding Comments, Mode=TwoWay}"
+                         Grid.Row="5" Grid.ColumnSpan="2"
+                         TextWrapping="Wrap"/>
 
         </Grid>
     </Grid>
