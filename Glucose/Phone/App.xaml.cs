@@ -311,6 +311,7 @@ namespace Rosier.Glucose.Phone
             var data = await StorageManager.ReadSummaryDataAsync();
             var vData = data.Select(d => new MonthSummaryViewModel(d));
             SummaryData = new MonthSummaryObservableCollection(vData);
+            SummaryData.OrderByMonthDesc();
         }
 
         /// <summary>
@@ -331,6 +332,7 @@ namespace Rosier.Glucose.Phone
                 SummaryData.Add(viewmodel);
             }
 
+            SummaryData.OrderByMonthDesc();
             await SaveSummaryDataAsync();
         }
 
