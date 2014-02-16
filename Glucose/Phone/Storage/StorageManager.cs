@@ -17,30 +17,31 @@ namespace Rosier.Glucose.Phone.Storage
         private const string MonthFolder = "measurements";
         private const string SummaryFile = "summary.json";
 
-        public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(string month)
+        public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(int month, int year)
         {
+            var monthString = CreateMonthFileName(month, year);
             var measurements = new List<MeasurementViewModel>();
-            var filepath = Path.Combine(MonthFolder, month) + ".json";
+            var filepath = Path.Combine(MonthFolder, monthString) + ".json";
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
 
             if (isolatedStorageFile.FileExists(filepath))
             {
-                await Task.Factory.StartNew(async () =>
+                //await Task.Factory.StartNew(async () =>
+                //{
+                var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
+                using (var reader = new StreamReader(fileStream))
                 {
-                    var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
-                    using (var reader = new StreamReader(fileStream))
+                    var fileContent = await reader.ReadToEndAsync();
+                    var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
+
+                    foreach (var m in models)
                     {
-                        var fileContent = await reader.ReadToEndAsync();
-                        var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
-
-                        foreach (var m in models)
-                        {
-                            measurements.Add(new MeasurementViewModel(m));
-                        }
+                        measurements.Add(new MeasurementViewModel(m));
                     }
+                }
 
-                });
+                //});
             }
 
 
@@ -51,14 +52,15 @@ namespace Rosier.Glucose.Phone.Storage
         {
             var tasks = new List<Task>();
             var monthMeasurements = from m in measurements
-                                    group m by m.DateTime.ToString("yyyy-MM") into month
+                                    group m by m.DateTime.ToString("MM-yyyy") into month
                                     select new { Month = month.Key, Measurements = month };
-
+            // TODO-rro: Don't use date format hard coded, use same method created for it
             await Task.WhenAll(monthMeasurements.Select(mm => SaveMonthMeasurementsAsync(mm.Measurements, mm.Month)).ToArray());
         }
 
         private async static Task SaveMonthMeasurementsAsync(IEnumerable<Measurement> measurements, string month)
         {
+            // TODO-rro: Don't use date format hard coded, use same method created for it
             var filepath = Path.Combine(MonthFolder, month) + ".json";
 
             var serializedString = await JsonConvert.SerializeObjectAsync(measurements);
@@ -66,7 +68,7 @@ namespace Rosier.Glucose.Phone.Storage
 
             VerifyFolderExistsAsync(isolatedStorageFile);
 
-            using (var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            using (var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Create, FileAccess.ReadWrite))
             using (var writer = new StreamWriter(fileStream))
             {
                 await writer.WriteAsync(serializedString);
@@ -122,6 +124,11 @@ namespace Rosier.Glucose.Phone.Storage
             {
                 await writer.WriteAsync(serializedString);
             }
+        }
+
+        private static string CreateMonthFileName(int month, int year)
+        {
+            return string.Format("{0}-{1}", month.ToString("00"), year);
         }
     }
 }

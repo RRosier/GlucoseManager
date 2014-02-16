@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using Rosier.Glucose.Phone.Resources;
 using Rosier.Glucose.Phone.Storage;
+using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone.ViewModels
 {
@@ -37,7 +38,7 @@ namespace Rosier.Glucose.Phone.ViewModels
             }
         }
 
-        public override async void LoadData()
+        public override async Task LoadDataAsync()
         {
             if (this.Summary == null)
             {
@@ -47,6 +48,7 @@ namespace Rosier.Glucose.Phone.ViewModels
                 App.SummaryData.CollectionChanged += SummaryData_CollectionChanged;
                 NotifyPropertyChanged("CurrentMonthAverageGlucose");
                 NotifyPropertyChanged("CurrentMonthAverageInsuline");
+                NotifyPropertyChanged("Summary");
             }
 
             this.IsDataLoaded = true;
@@ -57,6 +59,7 @@ namespace Rosier.Glucose.Phone.ViewModels
             //this.LoadData();
             NotifyPropertyChanged("CurrentMonthAverageGlucose");
             NotifyPropertyChanged("CurrentMonthAverageInsuline");
+            NotifyPropertyChanged("Summary");
         }
     }
 }

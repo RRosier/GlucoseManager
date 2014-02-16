@@ -22,13 +22,16 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         public async Task AddMeasurement(MeasurementViewModel measurementViewModel)
         {
-            await StorageManager.SaveMeasurementsAsync(new[] { Measurement.Model });
+            List<MeasurementViewModel> list = new List<MeasurementViewModel>();
+            var monthMeasurements = await StorageManager.LoadMeasurementsAsync(measurementViewModel.Model.DateTime.Month, measurementViewModel.Model.DateTime.Year);
+            if (monthMeasurements != null)
+                list.AddRange(monthMeasurements);
+
+            list.Add(measurementViewModel);
+
+            await StorageManager.SaveMeasurementsAsync(list.Select(m => m.Model));
 
             await this.UpdateSummary();
-
-
-            // only add to view model when month corresponds
-            base.Measurements.Add(this.Measurement);
         }
 
         private async Task UpdateSummary()

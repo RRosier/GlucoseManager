@@ -35,7 +35,7 @@ namespace Rosier.Glucose.Phone
             {
                 if (this.monthMeasurements == null)
                 {
-                    var measurementsTask = StorageManager.LoadMeasurementsAsync("01-2014");
+                    var measurementsTask = StorageManager.LoadMeasurementsAsync(1, 2014);
                     measurementsTask.Wait();
 
                     this.monthMeasurements = new ObservableCollection<MeasurementViewModel>(measurementsTask.Result);

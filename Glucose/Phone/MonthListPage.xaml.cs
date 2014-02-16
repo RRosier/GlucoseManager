@@ -29,8 +29,17 @@ namespace Rosier.Glucose.Phone
         }
 
         // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            int month;
+            int year;
+
+            this.GetQueryStringParameters(out month, out year);
+
+            this.ViewModel.Month = month;
+            this.ViewModel.Year = year;
+            await this.ViewModel.LoadDataAsync();
+
             // clear collection so that it gets rebound with new data
             //ViewModel.GroupedMeasurements = null;
             //DataContext = ViewModel;
@@ -40,24 +49,35 @@ namespace Rosier.Glucose.Phone
             //}
         }
 
-        private void NewButton_Click(object sender, EventArgs e)
+        private void GetQueryStringParameters(out int month, out int year)
         {
+            string monthString, yearString;
 
-            NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
+            if (!NavigationContext.QueryString.TryGetValue("year", out yearString))
+            {
+                throw new ArgumentException("Year not present.");
+            }
+
+            if (!NavigationContext.QueryString.TryGetValue("month", out monthString))
+            {
+                throw new ArgumentException("Month not present.");
+            }
+
+            // TODO-rro: perform more date validations on the input parameters.
+            if (!Int32.TryParse(monthString, out month))
+            {
+                throw new InvalidCastException("Month is not valid.");
+            }
+
+            if (!Int32.TryParse(yearString, out year))
+            {
+                throw new InvalidCastException("Year is not valid.");
+            }
         }
 
-        // Handle selection changed on LongListSelector
-        private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void NewButton_Click(object sender, EventArgs e)
         {
-            //// If selected item is null (no selection) do nothing
-            //if (MainLongListSelector.SelectedItem == null)
-            //    return;
-
-            //// Navigate to the new page
-            //NavigationService.Navigate(new Uri("/DetailsPage.xaml?selectedItem=" + (MainLongListSelector.SelectedItem as ItemViewModel).ID, UriKind.Relative));
-
-            //// Reset selected item to null (no selection)
-            //MainLongListSelector.SelectedItem = null;
+            NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
         }
 
         // Sample code for building a localized ApplicationBar

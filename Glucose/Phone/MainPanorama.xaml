@@ -55,8 +55,11 @@
 
             <!--Panorama item two-->
             <phone:PanoramaItem >
-                <phone:LongListSelector Margin="0,-50,10,0"
-                                        ItemsSource="{Binding Summary, Mode=OneWay}">
+                <phone:LongListSelector Name="monthlySummaryList"
+                                        Margin="0,-50,10,0"
+                                        ItemsSource="{Binding Summary, Mode=OneWay}" 
+                                        SelectionChanged="LongListSelector_SelectionChanged"
+                                        >
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Background="#992C6E24" Margin="0,10,0,10">

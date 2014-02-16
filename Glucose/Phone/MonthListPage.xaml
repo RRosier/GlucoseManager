@@ -57,8 +57,7 @@
             <phone:LongListSelector x:Name="MainLongListSelector" 
                                     Margin="0,0,-12,0" 
                                     ItemsSource="{Binding GroupedMeasurements, Mode=OneWay}" 
-                                    IsGroupingEnabled="True"
-                                    SelectionChanged="MainLongListSelector_SelectionChanged">
+                                    IsGroupingEnabled="True">
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
                         <Border Background="Transparent" Padding="0">

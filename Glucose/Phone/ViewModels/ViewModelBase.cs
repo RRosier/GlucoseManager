@@ -48,7 +48,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// <summary>
         /// When override performs actions to load this views data.
         /// </summary>
-        public virtual void LoadData() { }
+        public virtual Task LoadDataAsync() { return Task.FromResult(false); }
 
         protected virtual void Measurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
