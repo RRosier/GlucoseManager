@@ -320,10 +320,7 @@ namespace Rosier.Glucose.Phone
         /// <returns></returns>
         internal static async Task UpdateSummary(Measurement measurement)
         {
-            // TODO-rro: don't use string for format, use a real DateTime set on 1st of the month
-            var month = measurement.DateTime.ToString("yyyy-MM");
-
-            var monthSummary = SummaryData.Where(sd => sd.DisplayMonth == month).SingleOrDefault();
+            var monthSummary = SummaryData.FindItemByMonth(measurement.DateTime);
             if (monthSummary != null)
             {
                 monthSummary.AddMeasurement(measurement);

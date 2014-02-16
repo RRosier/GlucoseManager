@@ -35,8 +35,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         public MonthSummaryViewModel(Measurement measurement)
         {
             this.model = new MonthSummary();
-            // TODO-rro: don't use string for format, use a real DateTime set on 1st of the month
-            this.model.Month = measurement.DateTime.ToString("yyyy-MM");
+            this.model.Month = new DateTime(measurement.DateTime.Year, measurement.DateTime.Month, 1);
             this.model.TotalMeasures = 1;
             this.model.TotalGlucose = measurement.GlucoseValue;
             this.model.TotalInsuline = measurement.InsulineUnits;
@@ -58,7 +57,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public string DisplayMonth
         {
-            get { return this.model.Month; }
+            get { return this.model.Month.ToString("MMM yyyy"); }
         }
 
         /// <summary>

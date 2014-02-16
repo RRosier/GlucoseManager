@@ -17,8 +17,8 @@ namespace Rosier.Glucose.Model
         /// <value>
         /// The month.
         /// </value>
-        // TODO-rro: don't use string for format, use a real DateTime set on 1st of the month
-        public string Month { get; set; }
+        /// <remarks>Represented as the first of each month.</remarks>
+        public DateTime Month { get; set; }
         /// <summary>
         /// Gets or sets the total measures for this month.
         /// </summary>
