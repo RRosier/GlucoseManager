@@ -19,7 +19,7 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         public ViewModelBase()
         {
-            this.Measurements.CollectionChanged += Measurements_CollectionChanged;
+            //this.Measurements.CollectionChanged += Measurements_CollectionChanged;
         }
 
         /// <summary>
