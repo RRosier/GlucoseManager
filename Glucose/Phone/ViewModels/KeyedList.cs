@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone.ViewModels
 {
-    public class KeyedList<TKey, TItem> : ObservableCollection<TItem>
+    public class KeyedList<TKey, TItem> : List<TItem>
     {
         public TKey Key { get; protected set; }
 
-        public KeyedList(TKey key, ObservableCollection<TItem> items)
+        public KeyedList(TKey key, List<TItem> items)
             : base(items)
         {
             Key = key;
@@ -22,10 +22,5 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
             Key = grouping.Key;
         }
-
-        protected override void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            base.OnCollectionChanged(e);
-        }
-    }   
+    }
 }

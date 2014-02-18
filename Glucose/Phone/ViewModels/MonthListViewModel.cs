@@ -57,10 +57,5 @@ namespace Rosier.Glucose.Phone.ViewModels
                 this.GroupedMeasurements.Add(group);
             }
         }
-
-        protected override void Measurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            NotifyPropertyChanged("GroupedMeasurements");
-        }
     }
 }

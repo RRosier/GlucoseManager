@@ -21,40 +21,7 @@ namespace Rosier.Glucose.Phone
     /// </summary>
     public partial class App : Application
     {
-        private ObservableCollection<MeasurementViewModel> monthMeasurements = null;
-
-        /// <summary>
-        /// Gets the measurements of the current month.
-        /// </summary>
-        /// <value>
-        /// The measurements.
-        /// </value>
-        public ObservableCollection<MeasurementViewModel> Measurements
-        {
-            get
-            {
-                if (this.monthMeasurements == null)
-                {
-                    var measurementsTask = StorageManager.LoadMeasurementsAsync(1, 2014);
-                    measurementsTask.Wait();
-
-                    this.monthMeasurements = new ObservableCollection<MeasurementViewModel>(measurementsTask.Result);
-                    this.monthMeasurements.CollectionChanged += monthMeasurements_CollectionChanged;
-                }
-
-                return this.monthMeasurements;
-            }
-        }
-
         public static MonthSummaryObservableCollection SummaryData { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the current month.
-        /// </summary>
-        /// <value>
-        /// The current month.
-        /// </value>
-        public static string CurrentMonth { get; set; }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -98,35 +65,6 @@ namespace Rosier.Glucose.Phone
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-        }
-
-        private void monthMeasurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            var s = e.Action;
-        }
-
-        public void LoadData(string month = "")
-        {
-            // Sample data; replace with real data
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "Some comment" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "Some larger comment to spam multiple rows in the UI" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 12, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 13, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 13, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 13, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 13, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 11, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 11, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 11, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 10, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 10, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 10, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 9, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 9, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 9, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
-            Measurements.Add(new MeasurementViewModel(new Measurement() { DateTime = new DateTime(2014, 1, 9, 10, 12, 0), GlucoseValue = 129, InsulineUnits = 15, Comments = "" }));
         }
 
         // Code to execute when the application is launching (eg, from Start)

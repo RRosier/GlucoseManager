@@ -50,30 +50,6 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </summary>
         public virtual Task LoadDataAsync() { return Task.FromResult(false); }
 
-        protected virtual void Measurements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// Gets the month measurements.
-        /// </summary>
-        /// <value>
-        /// The month measurements.
-        /// </value>
-        public ObservableCollection<MeasurementViewModel> Measurements
-        {
-            get
-            {
-                if (!DesignerProperties.IsInDesignTool)
-                    this.measurements = ((App)Application.Current).Measurements;
-                return this.measurements;
-            }
-            set
-            {
-                this.measurements = value;
-            }
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")

@@ -2,18 +2,36 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vm="clr-namespace:Rosier.Glucose.Phone.ViewModels"
-    xmlns:m="clr-namespace:Rosier.Glucose.Model">
+    xmlns:m="clr-namespace:Rosier.Glucose.Model"
+    Month="2"
+    Year="2014">
 
-    <vm:MonthListViewModel.Measurements>
+    <vm:MonthListViewModel.GroupedMeasurements>
+        <!--<vm:KeyedList>
+            <vm:KeyedList.Items>
+                <vm:MeasurementViewModel>
+                    <vm:MeasurementViewModel.Model>
+                        <m:Measurement DateTime="2014-02-12 23:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
+                    </vm:MeasurementViewModel.Model>
+                </vm:MeasurementViewModel>
+                <vm:MeasurementViewModel>
+                    <vm:MeasurementViewModel.Model>
+                        <m:Measurement DateTime="2014-02-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
+                    </vm:MeasurementViewModel.Model>
+                </vm:MeasurementViewModel>
+                <vm:MeasurementViewModel>
+                    <vm:MeasurementViewModel.Model>
+                        <m:Measurement DateTime="2014-02-12 21:40" GlucoseValue="74" InsulineUnits="10" Comments=""/>
+                    </vm:MeasurementViewModel.Model>
+                </vm:MeasurementViewModel>
+            </vm:KeyedList.Items>
+        </vm:KeyedList>-->
+        
+        <!--<vm:MeasurementViewModel>-->
+
+        <!--</vm:MeasurementViewModel>
         <vm:MeasurementViewModel>
-            <vm:MeasurementViewModel.Model>
-                <m:Measurement DateTime="2014-01-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
-            </vm:MeasurementViewModel.Model>
-        </vm:MeasurementViewModel>
-        <vm:MeasurementViewModel>
-            <vm:MeasurementViewModel.Model>
-                <m:Measurement DateTime="2014-01-11 21:40" GlucoseValue="74" InsulineUnits="10" Comments=""/>
-            </vm:MeasurementViewModel.Model>
+
         </vm:MeasurementViewModel>
         <vm:MeasurementViewModel>
             <vm:MeasurementViewModel.Model>
@@ -44,7 +62,7 @@
             <vm:MeasurementViewModel.Model>
                 <m:Measurement DateTime="2014-01-10 08:31" GlucoseValue="131" InsulineUnits="15" Comments=""/>
             </vm:MeasurementViewModel.Model>
-        </vm:MeasurementViewModel>
-    </vm:MonthListViewModel.Measurements>
+        </vm:MeasurementViewModel>-->
+    </vm:MonthListViewModel.GroupedMeasurements>
 
 </vm:MonthListViewModel>
