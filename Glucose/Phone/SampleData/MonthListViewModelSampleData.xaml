@@ -7,8 +7,7 @@
     Year="2014">
 
     <vm:MonthListViewModel.GroupedMeasurements>
-        <!--<vm:KeyedList>
-            <vm:KeyedList.Items>
+        <vm:MeasurementKeyedList>
                 <vm:MeasurementViewModel>
                     <vm:MeasurementViewModel.Model>
                         <m:Measurement DateTime="2014-02-12 23:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
@@ -19,14 +18,30 @@
                         <m:Measurement DateTime="2014-02-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
                     </vm:MeasurementViewModel.Model>
                 </vm:MeasurementViewModel>
-                <vm:MeasurementViewModel>
-                    <vm:MeasurementViewModel.Model>
-                        <m:Measurement DateTime="2014-02-12 21:40" GlucoseValue="74" InsulineUnits="10" Comments=""/>
-                    </vm:MeasurementViewModel.Model>
-                </vm:MeasurementViewModel>
-            </vm:KeyedList.Items>
-        </vm:KeyedList>-->
-        
+            <vm:MeasurementViewModel>
+                <vm:MeasurementViewModel.Model>
+                    <m:Measurement DateTime="2014-02-12 21:40" GlucoseValue="74" InsulineUnits="10" Comments=""/>
+                </vm:MeasurementViewModel.Model>
+            </vm:MeasurementViewModel>
+        </vm:MeasurementKeyedList>
+        <vm:MeasurementKeyedList>
+            <vm:MeasurementViewModel>
+                <vm:MeasurementViewModel.Model>
+                    <m:Measurement DateTime="2014-02-12 23:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
+                </vm:MeasurementViewModel.Model>
+            </vm:MeasurementViewModel>
+            <vm:MeasurementViewModel>
+                <vm:MeasurementViewModel.Model>
+                    <m:Measurement DateTime="2014-02-12 10:12" GlucoseValue="129" InsulineUnits="15" Comments="some large comments that will span over multiple lines"/>
+                </vm:MeasurementViewModel.Model>
+            </vm:MeasurementViewModel>
+            <vm:MeasurementViewModel>
+                <vm:MeasurementViewModel.Model>
+                    <m:Measurement DateTime="2014-02-12 21:40" GlucoseValue="74" InsulineUnits="10" Comments=""/>
+                </vm:MeasurementViewModel.Model>
+            </vm:MeasurementViewModel>
+        </vm:MeasurementKeyedList>
+
         <!--<vm:MeasurementViewModel>-->
 
         <!--</vm:MeasurementViewModel>

@@ -11,6 +11,8 @@ namespace Rosier.Glucose.Phone.ViewModels
     {
         public TKey Key { get; protected set; }
 
+        public KeyedList() { }
+
         public KeyedList(TKey key, List<TItem> items)
             : base(items)
         {

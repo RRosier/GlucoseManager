@@ -128,8 +128,10 @@
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\KeyedList.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MeasurementKeyedList.cs" />
     <Compile Include="ViewModels\MeasurementViewModel.cs" />
     <Compile Include="ViewModels\MonthListViewModel.cs" />
+    <Compile Include="ViewModels\MonthlySummaryGroupedList.cs" />
     <Compile Include="ViewModels\MonthSummaryObservableCollection.cs" />
     <Compile Include="ViewModels\MonthSummaryViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
