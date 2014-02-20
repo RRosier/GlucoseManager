@@ -50,7 +50,10 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,12">
             <TextBlock Text="Glucose Manager" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding DisplayMonth}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+            <TextBlock Text="{Binding DisplayMonth}" Margin="9,0,0,0" 
+                       TextAlignment="Center"
+                       Style="{StaticResource PhoneTextTitle1Style}" 
+                       FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
         </StackPanel>
 
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
@@ -58,7 +61,7 @@
             <phone:LongListSelector x:Name="MainLongListSelector" 
                                     Margin="0,0,-12,0" 
                                     ItemsSource="{Binding GroupedMeasurements, Mode=OneWay}" 
-                                    IsGroupingEnabled="True">
+                                    IsGroupingEnabled="True" VerticalContentAlignment="Stretch">
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
                         <Border Background="Transparent" Padding="0">
@@ -93,7 +96,7 @@
                                        Padding="17,0,0,0"/>
                             
                             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
-                                <TextBlock TextWrapping="Wrap" Text="Value: " Margin="0,0,5,0"
+                                <TextBlock TextWrapping="Wrap" Text="Gluco: " Margin="0,0,5,0"
                                            FontSize="{StaticResource PhoneFontSizeMedium}"/>
                                 <TextBlock Text="{Binding GlucoseValue}" FontSize="{StaticResource PhoneFontSizeMedium}" />
                             </StackPanel>

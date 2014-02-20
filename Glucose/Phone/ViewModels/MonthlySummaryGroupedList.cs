@@ -9,5 +9,8 @@ namespace Rosier.Glucose.Phone.ViewModels
 {
     public class MonthlySummaryGroupedList : ObservableCollection<MeasurementKeyedList>
     {
+        public MonthlySummaryGroupedList() { }
+
+        public MonthlySummaryGroupedList(IEnumerable<MeasurementKeyedList> collection) : base(collection) { }
     }
 }

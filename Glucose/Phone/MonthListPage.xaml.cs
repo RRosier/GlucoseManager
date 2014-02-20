@@ -21,9 +21,6 @@ namespace Rosier.Glucose.Phone
         {
             InitializeComponent();
 
-            // Set the data context of the LongListSelector control to the sample data
-            //var vm = new MonthListViewModel();
-            //DataContext = vm;// App.ViewModel;
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
@@ -40,13 +37,10 @@ namespace Rosier.Glucose.Phone
             this.ViewModel.Year = year;
             await this.ViewModel.LoadDataAsync();
 
-            // clear collection so that it gets rebound with new data
-            //ViewModel.GroupedMeasurements = null;
-            //DataContext = ViewModel;
-            //if (!App.ViewModel.IsDataLoaded)
-            //{
-            //    App.ViewModel.LoadData();
-            //}
+            // TODO-rro: Look ugly, scroll to first item because by default it scrolls to the last one. Don't know why.
+            var firstItem = this.ViewModel.GroupedMeasurements.FirstOrDefault();
+            if (firstItem != null)
+                this.MainLongListSelector.ScrollTo(firstItem);
         }
 
         private void GetQueryStringParameters(out int month, out int year)
