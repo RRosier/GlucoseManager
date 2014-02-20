@@ -28,7 +28,9 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public int Year { get; set; }
 
-        public ObservableCollection<KeyedList<string, MeasurementViewModel>> GroupedMeasurements
+        public string DisplayMonth { get { return new DateTime(this.Year, this.Month, 1).ToString("MMMM yyyy"); } }
+
+        public virtual MonthlySummaryGroupedList GroupedMeasurements
         {
             get;
             set;
@@ -36,7 +38,7 @@ namespace Rosier.Glucose.Phone.ViewModels
 
         public MonthListViewModel()
         {
-            this.GroupedMeasurements = new ObservableCollection<KeyedList<string, MeasurementViewModel>>();
+            this.GroupedMeasurements = new MonthlySummaryGroupedList();
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace Rosier.Glucose.Phone.ViewModels
                 from value in monthlyMeasurements
                 orderby value.Model.DateTime descending
                 group value by value.DayString into valuesByDay
-                select new KeyedList<string, MeasurementViewModel>(valuesByDay);
+                select new MeasurementKeyedList(valuesByDay);
 
             foreach (var group in groupedValues)
             {
