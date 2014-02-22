@@ -15,22 +15,36 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="False">
 
+    <pages:MainTypedBasePage.Resources>
+        <DataTemplate x:Key="panoramaItemHeaderTemplate">
+            <Grid Margin="0">
+                <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+            </Grid>
+        </DataTemplate>
+    </pages:MainTypedBasePage.Resources>
+    
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama Title="Gluco">
+        <phone:Panorama>
+            <phone:Panorama.Title>
+                <Grid Height="100"  />
+            </phone:Panorama.Title>
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="Assets/Background.png" />
             </phone:Panorama.Background>
-            
+
             <!--Panorama item one-->
-            <phone:PanoramaItem>
-                <Grid Margin="0,-50,-22,0">
+            <phone:PanoramaItem Header="Menu" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}">
+                
+                <Grid Margin="0, 0, 0,0">
                     <Grid.RowDefinitions>
-                        
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <StackPanel Margin="10">
-                        <Grid Margin="0,00,0,100">
+
+                        <Grid Margin="0,00,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
@@ -46,24 +60,27 @@
                             <TextBlock Grid.Column="1" Grid.Row="1" FontSize="72" Text="{Binding CurrentMonthAverageInsuline}" />
                         </Grid>
                         
-                        <Button HorizontalAlignment="Left" BorderBrush="{x:Null}" Click="Button_Click">Add Measurements</Button>
-                    </StackPanel>
-                    
-                    
+                    <StackPanel Grid.Row="2" Margin="0,0,0,100">
+                        <Button HorizontalAlignment="Left" 
+                                BorderBrush="{x:Null}" 
+                                FontSize="{StaticResource PhoneFontSizeLarge}"
+                                Click="Button_Click">Add Measurements
+                        </Button>
+                    </StackPanel>                    
                 </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem >
+            <phone:PanoramaItem Header="Monthly summary" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}" >
                 <phone:LongListSelector Name="monthlySummaryList"
-                                        Margin="0,-50,10,0"
                                         ItemsSource="{Binding Summary, Mode=OneWay}" 
                                         SelectionChanged="LongListSelector_SelectionChanged"
                                         >
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Background="#992C6E24" Margin="0,10,0,10">
-                                <TextBlock Text="{Binding DisplayMonth}" TextWrapping="Wrap" FontSize="32"/>
+                            <StackPanel Background="#992C6E24" Margin="0,0,0,10">
+                                <TextBlock Text="{Binding DisplayMonth}" 
+                                           TextWrapping="Wrap" FontSize="32"/>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
@@ -80,6 +97,21 @@
                 </phone:LongListSelector >
             </phone:PanoramaItem>
         </phone:Panorama>
+
+        <Grid Height="50" Background="{StaticResource PhoneAccentBrush}"
+                  VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/ApplicationIcon.png"  />
+            <TextBlock Text="Gluco" Margin="2" 
+                       Grid.Column="1"
+                       Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Bold"/>
+        </Grid>
     </Grid>
 
 </pages:MainTypedBasePage>

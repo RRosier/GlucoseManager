@@ -9,27 +9,27 @@
     <vm:MainViewModel.Summary>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="02-2014" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
+                <m:MonthSummary Month="2014-2-1 00:00" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="01-2014" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
+                <m:MonthSummary Month="2014-1-1 00:00" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="12-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
+                <m:MonthSummary Month="2013-12-1 00:00" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="11-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
+                <m:MonthSummary Month="2013-11-1 00:00" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
         <vm:MonthSummaryViewModel>
             <vm:MonthSummaryViewModel.Model>
-                <m:MonthSummary Month="10-2013" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
+                <m:MonthSummary Month="2013-10-1 00:00" TotalMeasures="95" TotalGlucose="1000" TotalInsuline="350"/>
             </vm:MonthSummaryViewModel.Model>
         </vm:MonthSummaryViewModel>
     </vm:MainViewModel.Summary>
