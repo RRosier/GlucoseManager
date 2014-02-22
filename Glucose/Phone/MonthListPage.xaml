@@ -15,7 +15,8 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.BackgroundColor="{StaticResource PhoneAccentColor}">
 
     <pages:MonthListTypedBasePage.Resources>
         <Converters:StringLengthVisibilityConverter x:Key="StringLengthVisibilityConverter" />
@@ -48,33 +49,55 @@
          -->
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,12">
+        <!--<StackPanel Grid.Row="0" Margin="12,17,0,12">
             <TextBlock Text="Glucose Manager" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding DisplayMonth}" Margin="9,0,0,0" 
+            <TextBlock Text="{Binding DisplayMonth}" 
                        TextAlignment="Center"
                        Style="{StaticResource PhoneTextTitle1Style}" 
                        FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-        </StackPanel>
-
+        </StackPanel>-->
+        <Grid Height="50" Background="{StaticResource PhoneAccentBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/ApplicationIcon.png"  />
+            <TextBlock Text="Gluco" Margin="2" 
+                       Grid.Column="1"
+                       Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Bold"/>
+        </Grid>
         <!--ContentPanel contains LongListSelector and LongListSelector ItemTemplate. Place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Margin="0,10,0,10">
+                <TextBlock Text="{Binding DisplayMonth}" 
+                           TextAlignment="Center"
+                           Style="{StaticResource PhoneTextTitle1Style}" 
+                           FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+            </Border>
             <phone:LongListSelector x:Name="MainLongListSelector" 
-                                    Margin="0,0,-12,0" 
+                                    Margin="0,0,0,0" 
                                     ItemsSource="{Binding GroupedMeasurements, Mode=OneWay}" 
-                                    IsGroupingEnabled="True" VerticalContentAlignment="Stretch">
+                                    IsGroupingEnabled="True" VerticalContentAlignment="Stretch"
+                                    Grid.Row="1">
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent" Padding="0">
-                            <Border Background="{StaticResource PhoneAccentBrush}" BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" Margin="0">
+                            <Border Background="{StaticResource PhoneAccentBrush}" 
+                                    BorderThickness="2" Margin="0">
                                 <TextBlock Text="{Binding Key}" 
-                                           Padding="5, 0, 5, 0" 
+                                           Padding="5" 
                                            Style="{StaticResource PhoneTextGroupHeaderStyle}"
                                            Foreground="{StaticResource PhoneForegroundBrush}"
                                            FontWeight="Bold"
                                            VerticalAlignment="Center" 
                                            />
                             </Border>
-                        </Border>
                     </DataTemplate>
                 </phone:LongListSelector.GroupHeaderTemplate>
                 <phone:LongListSelector.ItemTemplate>

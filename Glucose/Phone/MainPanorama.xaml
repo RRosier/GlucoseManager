@@ -13,7 +13,8 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False">
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.BackgroundColor="{StaticResource PhoneAccentColor}">
 
     <pages:MainTypedBasePage.Resources>
         <DataTemplate x:Key="panoramaItemHeaderTemplate">
@@ -71,16 +72,24 @@
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Monthly summary" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}" >
+            <phone:PanoramaItem Header="Monthly overview" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}" >
                 <phone:LongListSelector Name="monthlySummaryList"
                                         ItemsSource="{Binding Summary, Mode=OneWay}" 
                                         SelectionChanged="LongListSelector_SelectionChanged"
                                         >
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Background="#992C6E24" Margin="0,0,0,10">
-                                <TextBlock Text="{Binding DisplayMonth}" 
-                                           TextWrapping="Wrap" FontSize="32"/>
+                            <StackPanel Margin="0,0,0,10">
+                                <Border Background="{StaticResource PhoneAccentBrush}" 
+                                    BorderThickness="2" Margin="0">
+                                    <TextBlock Text="{Binding DisplayMonth}" 
+                                           Padding="5" 
+                                           Style="{StaticResource PhoneTextGroupHeaderStyle}"
+                                           Foreground="{StaticResource PhoneForegroundBrush}"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center" 
+                                           />
+                                </Border>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
@@ -88,8 +97,8 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="{Binding Glucose}" Grid.Column="1"/>
-                                    <TextBlock Text="{Binding Insuline}" Grid.Column="3"/>
+                                    <TextBlock Text="{Binding Glucose}" Grid.Column="1" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                                    <TextBlock Text="{Binding Insuline}" Grid.Column="3" FontSize="{StaticResource PhoneFontSizeLarge}"/>
                                 </Grid>
                             </StackPanel>
                         </DataTemplate>
