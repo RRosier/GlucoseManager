@@ -13,7 +13,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.IsVisible="False"
     shell:SystemTray.BackgroundColor="{StaticResource PhoneAccentColor}">
 
     <pages:MainTypedBasePage.Resources>
@@ -26,9 +26,27 @@
     
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
-        <phone:Panorama>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="50" Background="{StaticResource PhoneAccentBrush}"
+                  >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/ApplicationIcon.png"  />
+            <TextBlock Text="Gluco" Margin="2" 
+                       Grid.Column="1"
+                       Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Bold"/>
+        </Grid>
+        <phone:Panorama Grid.Row="1">
             <phone:Panorama.Title>
-                <Grid Height="100"  />
+                <Grid Height="0"  />
             </phone:Panorama.Title>
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="Assets/Background.png" />
@@ -106,21 +124,6 @@
                 </phone:LongListSelector >
             </phone:PanoramaItem>
         </phone:Panorama>
-
-        <Grid Height="50" Background="{StaticResource PhoneAccentBrush}"
-                  VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Image Source="/Assets/ApplicationIcon.png"  />
-            <TextBlock Text="Gluco" Margin="2" 
-                       Grid.Column="1"
-                       Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Bold"/>
-        </Grid>
     </Grid>
 
 </pages:MainTypedBasePage>
