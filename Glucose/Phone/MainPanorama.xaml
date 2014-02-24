@@ -17,7 +17,7 @@
     shell:SystemTray.BackgroundColor="{StaticResource PhoneAccentColor}">
 
     <pages:MainTypedBasePage.Resources>
-        <DataTemplate x:Key="panoramaItemHeaderTemplate">
+        <DataTemplate x:Key="pivotHeaderTemplate">
             <Grid Margin="0">
                 <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
             </Grid>
@@ -44,16 +44,16 @@
                        Grid.Column="1"
                        Style="{StaticResource PhoneTextLargeStyle}" FontWeight="Bold"/>
         </Grid>
-        <phone:Panorama Grid.Row="1">
-            <phone:Panorama.Title>
+        <phone:Pivot Grid.Row="1" HeaderTemplate="{StaticResource pivotHeaderTemplate}">
+            <phone:Pivot.Title>
                 <Grid Height="0"  />
-            </phone:Panorama.Title>
-            <phone:Panorama.Background>
+            </phone:Pivot.Title>
+            <phone:Pivot.Background>
                 <ImageBrush ImageSource="Assets/Background.png" />
-            </phone:Panorama.Background>
+            </phone:Pivot.Background>
 
             <!--Panorama item one-->
-            <phone:PanoramaItem Header="Menu" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}">
+            <phone:PivotItem Header="Menu" >
                 
                 <Grid Margin="0, 0, 0,0">
                     <Grid.RowDefinitions>
@@ -87,10 +87,10 @@
                         </Button>
                     </StackPanel>                    
                 </Grid>
-            </phone:PanoramaItem>
+            </phone:PivotItem>
 
             <!--Panorama item two-->
-            <phone:PanoramaItem Header="Monthly overview" HeaderTemplate="{StaticResource panoramaItemHeaderTemplate}" >
+            <phone:PivotItem Header="Monthly overview" >
                 <phone:LongListSelector Name="monthlySummaryList"
                                         ItemsSource="{Binding Summary, Mode=OneWay}" 
                                         SelectionChanged="LongListSelector_SelectionChanged"
@@ -122,8 +122,8 @@
                         </DataTemplate>
                     </phone:LongListSelector.ItemTemplate>
                 </phone:LongListSelector >
-            </phone:PanoramaItem>
-        </phone:Panorama>
+            </phone:PivotItem>
+        </phone:Pivot>
     </Grid>
 
 </pages:MainTypedBasePage>
