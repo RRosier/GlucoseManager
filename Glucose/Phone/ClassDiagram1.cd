@@ -31,7 +31,7 @@
   <Class Name="Rosier.Glucose.Phone.App" Collapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AwAgCSAIAAAQhAAAIAEQAAAAEAAAEQAAAAAQAIIEAAA=</HashCode>
+      <HashCode>IwAgCSAIAAAChAAAAAAAAAAAAAAAEQAAAAIAAMIAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -49,24 +49,17 @@
       <FileName>LocalizedStrings.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Rosier.Glucose.Phone.MainPage" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
-      <FileName>MainPage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Rosier.Glucose.Phone.MainPanorama" Collapsed="true">
     <Position X="15.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>MainPanorama.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Rosier.Glucose.Phone.MonthListPage" Collapsed="true">
     <Position X="2.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MonthListPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,7 +81,7 @@
   <Class Name="Rosier.Glucose.Model.MonthSummary" Collapsed="true">
     <Position X="11.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABCAAAgAABAAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgAABAAAAAAAAAAAAAAAAAAAAgEAAAAAAAAAAA=</HashCode>
       <FileName>Models\MonthSummary.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,14 +101,14 @@
   <Class Name="Rosier.Glucose.Phone.Storage.StorageManager" Collapsed="true">
     <Position X="13.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAIAAAAAAAAAAAgAACAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAEAAAQAAAAAAAAICACAAAAAAAAgAACAAAACAAAAAgA=</HashCode>
       <FileName>Storage\StorageManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Rosier.Glucose.Phone.ViewModels.AddMeasurementViewModel" Collapsed="true">
     <Position X="3" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>ViewModels\AddMeasurementViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -130,14 +123,14 @@
   <Class Name="Rosier.Glucose.Phone.ViewModels.KeyedList&lt;TKey, TItem&gt;" Collapsed="true">
     <Position X="10" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\KeyedList.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Rosier.Glucose.Phone.ViewModels.MainViewModel" Collapsed="true">
     <Position X="7.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAgAAAAAAAAAAIAAAgAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\MainViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -151,14 +144,14 @@
   <Class Name="Rosier.Glucose.Phone.ViewModels.MonthListViewModel" Collapsed="true">
     <Position X="5.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAgAAAAAEkAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\MonthListViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Rosier.Glucose.Phone.ViewModels.ViewModelBase" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAIAAAAAAAAAAgAAAABAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAABAAAAAAAAAgCAA=</HashCode>
       <FileName>ViewModels\ViewModelBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
