@@ -46,7 +46,7 @@
         </Grid>
         <phone:Pivot Grid.Row="1" HeaderTemplate="{StaticResource pivotHeaderTemplate}">
             <phone:Pivot.Title>
-                <Grid Height="0"  />
+                <Grid Height="0" />
             </phone:Pivot.Title>
             <phone:Pivot.Background>
                 <ImageBrush ImageSource="Assets/Background.png" />
@@ -152,4 +152,14 @@
         </phone:Pivot>
     </Grid>
 
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar 
+            IsVisible="True" IsMenuEnabled="True" 
+            Mode="Minimized" Opacity="0.9">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="About" Click="About_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
 </pages:MainTypedBasePage>

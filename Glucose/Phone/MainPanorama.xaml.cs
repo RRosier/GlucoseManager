@@ -48,5 +48,10 @@ namespace Rosier.Glucose.Phone
             // Reset selected item to null (no selection)
             monthlySummaryList.SelectedItem = null;
         }
+
+        private void About_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("some message");
+        }
     }
 }

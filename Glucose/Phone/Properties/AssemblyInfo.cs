@@ -6,12 +6,12 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Rosier.Glucose.Phone")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Gluco")]
+[assembly: AssemblyDescription("Glucose and insuline values management")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rosier.Glucose.Phone")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("Gluco")]
+[assembly: AssemblyCopyright("Copyright © Ronald Rosier 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
