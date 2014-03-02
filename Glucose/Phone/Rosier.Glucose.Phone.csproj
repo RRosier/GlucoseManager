@@ -180,6 +180,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Rosier.Glucose.Phone_2014_03_02_13_52_19.sap" />
+    <None Include="Rosier.Glucose.Phone_2014_03_02_20_36_18.sap" />
+    <None Include="Rosier.Glucose.Phone_2014_03_02_20_38_39.sap" />
+    <None Include="Rosier.Glucose.Phone_2014_03_02_20_40_35.sap" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
