@@ -93,8 +93,8 @@
                     <StackPanel Margin="0,50,0,0">
                         <TextBlock Text="Description"/>
                         <TextBlock Style="{StaticResource PhoneTextSubtleStyle}" TextWrapping="Wrap">
-                            Enter and trace back easy your glucose measurements and the amount of insuline used.
-                            Review your measurements by monthly average or in more details.
+                            Manage your glucose measurements and insuline useage easy with this simple app.<LineBreak/>
+                            Review your measurements by monthly or monthly average.
                         </TextBlock>
                     </StackPanel>
 

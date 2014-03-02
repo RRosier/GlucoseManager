@@ -11,3 +11,4 @@ namespace Rosier.Glucose.Phone.Pages
     {
     }
 }
+    
