@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="en" />
   </Languages>
-  <App xmlns="" ProductID="{61DA92E7-A311-4E21-8F43-2CCC25DA6440}" Title="Gluco - Develop" RuntimeType="Silverlight" Version="1.1.0.0-de" Genre="apps.normal" Author="Ronald Rosier" Description="Manage your glucose measurements and insuline useage easy with this simple app.&#xD;&#xA;Review your measurements by monthly or monthly average." Publisher="Ronald Rosier" PublisherID="{411f01c9-56d1-4f5e-bd1b-f1ff98a52f3b}">
+  <App xmlns="" ProductID="{b2618daf-6102-4f0f-ab87-e6f74b54111a}" Title="Gluco" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Ronald Rosier" Description="Manage your glucose measurements and insuline useage easy with this simple app.&#xD;&#xA;Review your measurements by monthly or monthly average." Publisher="Ronald Rosier" PublisherID="{411f01c9-56d1-4f5e-bd1b-f1ff98a52f3b}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
