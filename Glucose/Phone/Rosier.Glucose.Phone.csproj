@@ -107,7 +107,8 @@
     <Compile Include="MainPanorama.xaml.cs">
       <DependentUpon>MainPanorama.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Summary.cs" />
+    <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Models\Month.cs" />
     <Compile Include="MonthListPage.xaml.cs">
       <DependentUpon>MonthListPage.xaml</DependentUpon>
     </Compile>
@@ -116,6 +117,10 @@
     <Compile Include="Pages\AboutTypedBasePage.cs" />
     <Compile Include="Pages\AddMeasurementTypedBasePage.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\ConnectLivePage.xaml.cs">
+      <DependentUpon>ConnectLivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConnectLiveTypedPage.cs" />
     <Compile Include="Pages\MainTypedPage.cs" />
     <Compile Include="Pages\MonthListTypedBasePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="Storage\StorageManager.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AddMeasurementViewModel.cs" />
+    <Compile Include="ViewModels\ConnectLiveViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\KeyedList.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -167,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="Pages\ConnectLivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SampleData\MonthListViewModelSampleData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +184,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="configuration.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\configuration.config" />
+    <None Include="Fonts\LiveSymbol.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
@@ -230,12 +245,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Live, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\LiveSDK.5.6\lib\WindowsPhone8\Microsoft.Live.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Live.Controls, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\LiveSDK.5.6\lib\WindowsPhone8\Microsoft.Live.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />

@@ -252,35 +252,55 @@ namespace Rosier.Glucose.Phone
             SummaryData.OrderByMonthDesc();
         }
 
+        /////// <summary>
+        /////// Updates the summary data.
+        /////// </summary>
+        /////// <param name="measurement">The measurement.</param>
+        /////// <returns></returns>
+        ////internal static async Task UpdateSummary(Measurement measurement)
+        ////{
+        ////    var monthSummary = SummaryData.FindItemByMonth(measurement.DateTime);
+        ////    if (monthSummary != null)
+        ////    {
+        ////        monthSummary.AddMeasurement(measurement);
+        ////    }
+        ////    else
+        ////    {
+        ////        var viewmodel = new MonthSummaryViewModel(measurement);
+        ////        SummaryData.Add(viewmodel);
+        ////    }
+
+        ////    SummaryData.OrderByMonthDesc();
+        ////    await SaveSummaryDataAsync();
+        ////}
+
         /// <summary>
-        /// Updates the summary data.
+        /// Updates the summary.
         /// </summary>
-        /// <param name="measurement">The measurement.</param>
+        /// <param name="monthSummary">The month summary.</param>
         /// <returns></returns>
-        internal static async Task UpdateSummary(Measurement measurement)
+        internal static async Task UpdateSummary(MonthSummary monthSummary)
         {
-            var monthSummary = SummaryData.FindItemByMonth(measurement.DateTime);
-            if (monthSummary != null)
+            var viewModel = new MonthSummaryViewModel(monthSummary);
+
+            var oldSummary = SummaryData.FindItemByMonth(monthSummary.Month);
+            if (oldSummary != null)
             {
-                monthSummary.AddMeasurement(measurement);
-            }
-            else
-            {
-                var viewmodel = new MonthSummaryViewModel(measurement);
-                SummaryData.Add(viewmodel);
+                SummaryData.Remove(oldSummary);
             }
 
+            SummaryData.Add(viewModel);
             SummaryData.OrderByMonthDesc();
-            await SaveSummaryDataAsync();
+            await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
         }
 
         /// <summary>
         /// Saves the summary data asynchronous.
         /// </summary>
         /// <returns></returns>
-        private static async Task SaveSummaryDataAsync()
-        {
-            await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
-        }
+        ////private static async Task SaveSummaryDataAsync()
+        ////{
+        ////    await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
+        ////}
     }
 }

@@ -53,5 +53,10 @@ namespace Rosier.Glucose.Phone
         {
             NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
         }
+
+        private void Connect_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Pages/ConnectLivePage.xaml", UriKind.Relative));
+        }
     }
 }

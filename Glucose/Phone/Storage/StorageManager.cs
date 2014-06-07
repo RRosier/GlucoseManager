@@ -12,41 +12,63 @@ using System.Threading.Tasks;
 
 namespace Rosier.Glucose.Phone.Storage
 {
-    public class StorageManager
+    /// <summary>
+    /// Class to handle storage operations.
+    /// </summary>
+    internal class StorageManager
     {
         private const string MonthFolder = "measurements";
         private const string SummaryFile = "summary.json";
 
-        public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(int month, int year)
+        /// <summary>
+        /// Loads the measurements for the provided month asynchronous.
+        /// </summary>
+        /// <param name="monthString">The month string in format MM-yyyy.</param>
+        /// <returns></returns>
+        public async static Task<IEnumerable<Measurement>> LoadMeasurementsAsync(int month, int year)
         {
             var monthString = CreateMonthFileName(month, year);
-            var measurements = new List<MeasurementViewModel>();
+            var measurements = new List<Measurement>();
             var filepath = Path.Combine(MonthFolder, monthString) + ".json";
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
-
             if (isolatedStorageFile.FileExists(filepath))
             {
-                //await Task.Factory.StartNew(async () =>
-                //{
                 var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
                 using (var reader = new StreamReader(fileStream))
                 {
                     var fileContent = await reader.ReadToEndAsync();
-                    var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
-
-                    foreach (var m in models)
-                    {
-                        measurements.Add(new MeasurementViewModel(m));
-                    }
+                    measurements = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
                 }
-
-                //});
             }
-
 
             return measurements;
         }
+
+        ////public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(int month, int year)
+        ////{
+        ////    var monthString = CreateMonthFileName(month, year);
+        ////    var measurements = new List<MeasurementViewModel>();
+        ////    var filepath = Path.Combine(MonthFolder, monthString) + ".json";
+        ////    var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+        ////    if (isolatedStorageFile.FileExists(filepath))
+        ////    {
+        ////        var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
+        ////        using (var reader = new StreamReader(fileStream))
+        ////        {
+        ////            var fileContent = await reader.ReadToEndAsync();
+        ////            var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
+
+        ////            foreach (var m in models)
+        ////            {
+        ////                measurements.Add(new MeasurementViewModel(m));
+        ////            }
+        ////        }
+        ////    }
+
+        ////    return measurements;
+        ////}
 
         public static async Task SaveMeasurementsAsync(IEnumerable<Measurement> measurements)
         {

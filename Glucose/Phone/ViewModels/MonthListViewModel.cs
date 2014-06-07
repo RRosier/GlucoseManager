@@ -48,8 +48,10 @@ namespace Rosier.Glucose.Phone.ViewModels
         {
             var monthlyMeasurements = await StorageManager.LoadMeasurementsAsync(Month, Year);
 
+            var viewModels = monthlyMeasurements.Select(m => new MeasurementViewModel(m));
+
             var groupedValues =
-                from value in monthlyMeasurements
+                from value in viewModels
                 orderby value.Model.DateTime descending
                 group value by value.DayString into valuesByDay
                 select new MeasurementKeyedList(valuesByDay);
