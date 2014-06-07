@@ -68,7 +68,17 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public int Glucose
         {
-            get { return this.model.MonthlyDayGlucoAverage; }
+            get
+            {
+                int glucose = this.model.MonthlyDayGlucoAverage;
+                //// compatibility with previous version.
+                if (glucose == 0)
+                {
+                    glucose = this.model.TotalGlucose / this.model.TotalMeasures;
+                }
+
+                return glucose;
+            }
         }
 
         /// <summary>
@@ -79,7 +89,17 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public int Insuline
         {
-            get { return this.model.DailyAverageInsuline; }
+            get
+            {
+                int insuline = this.model.DailyAverageInsuline;
+                //// compatibility with previous version.
+                if (insuline == 0)
+                {
+                    insuline = this.model.TotalInsuline / this.model.TotalMeasures;
+                }
+
+                return insuline;
+            }
         }
 
         /// <summary>
