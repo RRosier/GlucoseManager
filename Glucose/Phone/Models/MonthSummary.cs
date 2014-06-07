@@ -40,5 +40,22 @@ namespace Rosier.Glucose.Model
         /// The total glucose.
         /// </value>
         public int TotalGlucose { get; set; }
+
+        /// <summary>
+        /// Gets or sets the daily gluco average.
+        /// </summary>
+        /// <value>
+        /// The daily gluco average.
+        /// </value>
+        /// <remarks>Calculated by taking the monthly average of the daily averages.</remarks>
+        public int MonthlyDayGlucoAverage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the daily average insuline.
+        /// </summary>
+        /// <value>
+        /// The daily average of insuline units taken.
+        /// </value>
+        public int DailyAverageInsuline { get; set; }
     }
 }

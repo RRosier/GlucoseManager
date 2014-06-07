@@ -68,7 +68,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public int Glucose
         {
-            get { return this.model.TotalGlucose / this.model.TotalMeasures; }
+            get { return this.model.MonthlyDayGlucoAverage; }
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </value>
         public int Insuline
         {
-            get { return this.model.TotalInsuline / this.model.TotalMeasures; }
+            get { return this.model.DailyAverageInsuline; }
         }
 
         /// <summary>

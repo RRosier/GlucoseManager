@@ -72,6 +72,14 @@ namespace Rosier.Glucose.Model
                 TotalInsuline = this.Measurements.Sum(m => m.InsulineUnits)
             };
 
+            var dayMeasurements = from m in this.Measurements
+                                  orderby m.DateTime descending
+                                  group m by m.DateTime.Day into measurementsByDay
+                                  select measurementsByDay;
+
+            summary.MonthlyDayGlucoAverage = Convert.ToInt32(Math.Round(dayMeasurements.Average(d => d.Average(m => m.GlucoseValue))));
+            summary.DailyAverageInsuline = Convert.ToInt32(Math.Round(dayMeasurements.Average(d => d.Sum(m => m.InsulineUnits))));
+
             return summary;
         }
     }
