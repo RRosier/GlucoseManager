@@ -23,8 +23,9 @@ namespace Rosier.Glucose.Phone.Storage
         /// <summary>
         /// Loads the measurements for the provided month asynchronous.
         /// </summary>
-        /// <param name="monthString">The month string in format MM-yyyy.</param>
-        /// <returns></returns>
+        /// <param name="month">The month.</param>
+        /// <param name="year">The year.</param>
+        /// <returns>List of <see cref="Measurements"/> for the provided month.</returns>
         public async static Task<IEnumerable<Measurement>> LoadMeasurementsAsync(int month, int year)
         {
             var monthString = CreateMonthFileName(month, year);
@@ -38,38 +39,19 @@ namespace Rosier.Glucose.Phone.Storage
                 using (var reader = new StreamReader(fileStream))
                 {
                     var fileContent = await reader.ReadToEndAsync();
-                    measurements = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
+
+                    measurements = JsonConvert.DeserializeObject<List<Measurement>>(fileContent);
                 }
             }
 
             return measurements;
         }
 
-        ////public async static Task<IEnumerable<MeasurementViewModel>> LoadMeasurementsAsync(int month, int year)
-        ////{
-        ////    var monthString = CreateMonthFileName(month, year);
-        ////    var measurements = new List<MeasurementViewModel>();
-        ////    var filepath = Path.Combine(MonthFolder, monthString) + ".json";
-        ////    var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
-
-        ////    if (isolatedStorageFile.FileExists(filepath))
-        ////    {
-        ////        var fileStream = isolatedStorageFile.OpenFile(filepath, FileMode.Open);
-        ////        using (var reader = new StreamReader(fileStream))
-        ////        {
-        ////            var fileContent = await reader.ReadToEndAsync();
-        ////            var models = await JsonConvert.DeserializeObjectAsync<List<Measurement>>(fileContent);
-
-        ////            foreach (var m in models)
-        ////            {
-        ////                measurements.Add(new MeasurementViewModel(m));
-        ////            }
-        ////        }
-        ////    }
-
-        ////    return measurements;
-        ////}
-
+        /// <summary>
+        /// Saves the measurements asynchronous to storage.
+        /// </summary>
+        /// <param name="measurements">The measurements.</param>
+        /// <returns></returns>
         public static async Task SaveMeasurementsAsync(IEnumerable<Measurement> measurements)
         {
             var tasks = new List<Task>();
@@ -85,7 +67,7 @@ namespace Rosier.Glucose.Phone.Storage
             // TODO-rro: Don't use date format hard coded, use same method created for it
             var filepath = Path.Combine(MonthFolder, month) + ".json";
 
-            var serializedString = await JsonConvert.SerializeObjectAsync(measurements);
+            var serializedString = JsonConvert.SerializeObject(measurements);
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
             VerifyFolderExistsAsync(isolatedStorageFile);
@@ -116,15 +98,12 @@ namespace Rosier.Glucose.Phone.Storage
 
             if (isolatedStorageFile.FileExists(SummaryFile))
             {
-                //await Task.Factory.StartNew(async () =>
-                //{
                 var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Open);
                 using (var reader = new StreamReader(fileStream))
                 {
                     var fileContent = await reader.ReadToEndAsync();
-                    data = await JsonConvert.DeserializeObjectAsync<List<MonthSummary>>(fileContent);
+                    data = JsonConvert.DeserializeObject<List<MonthSummary>>(fileContent);
                 }
-                //});
             }
 
             return data;
@@ -138,7 +117,7 @@ namespace Rosier.Glucose.Phone.Storage
         /// </returns>
         internal static async Task WriteSummaryDataAsync(IEnumerable<MonthSummary> data)
         {
-            var serializedString = await JsonConvert.SerializeObjectAsync(data);
+            var serializedString = JsonConvert.SerializeObject(data);
             var isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
             using (var fileStream = isolatedStorageFile.OpenFile(SummaryFile, FileMode.Create, FileAccess.ReadWrite))

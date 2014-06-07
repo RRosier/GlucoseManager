@@ -252,28 +252,6 @@ namespace Rosier.Glucose.Phone
             SummaryData.OrderByMonthDesc();
         }
 
-        /////// <summary>
-        /////// Updates the summary data.
-        /////// </summary>
-        /////// <param name="measurement">The measurement.</param>
-        /////// <returns></returns>
-        ////internal static async Task UpdateSummary(Measurement measurement)
-        ////{
-        ////    var monthSummary = SummaryData.FindItemByMonth(measurement.DateTime);
-        ////    if (monthSummary != null)
-        ////    {
-        ////        monthSummary.AddMeasurement(measurement);
-        ////    }
-        ////    else
-        ////    {
-        ////        var viewmodel = new MonthSummaryViewModel(measurement);
-        ////        SummaryData.Add(viewmodel);
-        ////    }
-
-        ////    SummaryData.OrderByMonthDesc();
-        ////    await SaveSummaryDataAsync();
-        ////}
-
         /// <summary>
         /// Updates the summary.
         /// </summary>
@@ -293,14 +271,5 @@ namespace Rosier.Glucose.Phone
             SummaryData.OrderByMonthDesc();
             await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
         }
-
-        /// <summary>
-        /// Saves the summary data asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        ////private static async Task SaveSummaryDataAsync()
-        ////{
-        ////    await StorageManager.WriteSummaryDataAsync(SummaryData.Select(d => d.Model));
-        ////}
     }
 }
