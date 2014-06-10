@@ -27,5 +27,20 @@ namespace Rosier.Glucose.Model
         /// Free comments about the measurement.
         /// </summary>
         public string Comments { get; set; }
+
+        /// <summary>
+        /// Clones this instance.
+        /// </summary>
+        /// <returns>New instance of <see cref="Measurement"/> with the same data as this instance.</returns>
+        internal Measurement Clone()
+        {
+            return new Measurement()
+            {
+                DateTime = this.DateTime,
+                GlucoseValue = this.GlucoseValue,
+                InsulineUnits = this.InsulineUnits,
+                Comments = this.Comments
+            };
+        }
     }
 }

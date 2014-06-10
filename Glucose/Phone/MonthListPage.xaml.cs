@@ -43,6 +43,15 @@ namespace Rosier.Glucose.Phone
                 this.MainLongListSelector.ScrollTo(firstItem);
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            //// Don't clear the data when navigating to the measurements detail page.
+            if (e.Uri != new Uri("/AddMeasurementPage.xaml", UriKind.Relative))
+            {
+                this.ViewModel.ClearData();
+            }
+        }
+
         private void GetQueryStringParameters(out int month, out int year)
         {
             string monthString, yearString;
@@ -72,6 +81,17 @@ namespace Rosier.Glucose.Phone
         private void NewButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
+        }
+
+        private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems != null && e.AddedItems.Count != 0)
+            {
+                var o = e.AddedItems.OfType<MeasurementViewModel>().First();
+                App.SelectedMeasurement = o.Model;
+
+                NavigationService.Navigate(new Uri("/AddMeasurementPage.xaml", UriKind.Relative));
+            }
         }
 
         // Sample code for building a localized ApplicationBar

@@ -108,7 +108,7 @@
       <DependentUpon>MainPanorama.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Configuration.cs" />
-    <Compile Include="Models\Month.cs" />
+    <Compile Include="Models\MonthMeasurements.cs" />
     <Compile Include="MonthListPage.xaml.cs">
       <DependentUpon>MonthListPage.xaml</DependentUpon>
     </Compile>

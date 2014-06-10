@@ -20,6 +20,11 @@ namespace Rosier.Glucose.Phone.Pages
             InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.ViewModel.LoadDataAsync();
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             NavigationService.GoBack();

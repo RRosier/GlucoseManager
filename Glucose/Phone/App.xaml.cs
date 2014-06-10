@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using Rosier.Glucose.Model;
 using Rosier.Glucose.Phone.Storage;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Rosier.Glucose.Phone
 {
@@ -22,6 +23,22 @@ namespace Rosier.Glucose.Phone
     public partial class App : Application
     {
         public static MonthSummaryObservableCollection SummaryData { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the selected month measurements.
+        /// </summary>
+        /// <value>
+        /// The selected month measurements.
+        /// </value>
+        public static MonthMeasurements SelectedMonth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected measurement to update.
+        /// </summary>
+        /// <value>
+        /// The selected measurement.
+        /// </value>
+        public static Measurement SelectedMeasurement { get; set; }
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.

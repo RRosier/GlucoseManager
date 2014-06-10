@@ -85,7 +85,8 @@
                                     Margin="0,0,0,0" 
                                     ItemsSource="{Binding GroupedMeasurements, Mode=OneWay}" 
                                     IsGroupingEnabled="True" VerticalContentAlignment="Stretch"
-                                    Grid.Row="1">
+                                    Grid.Row="1"
+                                    SelectionChanged="MainLongListSelector_SelectionChanged">
                 <phone:LongListSelector.GroupHeaderTemplate>
                     <DataTemplate>
                             <Border Background="{StaticResource PhoneAccentBrush}" 

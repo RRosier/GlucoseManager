@@ -10,24 +10,31 @@ namespace Rosier.Glucose.Model
     /// <summary>
     /// Represents a single Month and all the measurements linked to it.
     /// </summary>
-    public class Month
+    public class MonthMeasurements
     {
-        private int month;
-        private int year;
+        public int Month { get; private set; }
+        public int Year { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Month" /> class.
         /// </summary>
         /// <param name="month">The month.</param>
         /// <param name="year">The year.</param>
-        public Month(int month, int year)
+        public MonthMeasurements(int month, int year)
         {
-            this.month = month;
-            this.year = year;
+            this.Month = month;
+            this.Year = year;
             this.Measurements = new List<Measurement>();
         }
 
-        private List<Measurement> Measurements { get; set; }
+        /// <summary>
+        /// Gets or sets the measurements.
+        /// </summary>
+        /// <value>
+        /// The measurements.
+        /// </value>
+        /// TODO-rro: Should we expose the measurements list or not?
+        public List<Measurement> Measurements { get; set; }
 
         /// <summary>
         /// Loads this month's measurements from disk.
@@ -35,7 +42,7 @@ namespace Rosier.Glucose.Model
         /// <returns></returns>
         public async Task Load()
         {
-            var loadedMeasurements = await StorageManager.LoadMeasurementsAsync(month, year);
+            var loadedMeasurements = await StorageManager.LoadMeasurementsAsync(this.Month, this.Year);
             Measurements = loadedMeasurements.ToList();
         }
 
@@ -66,7 +73,7 @@ namespace Rosier.Glucose.Model
         {
             var summary = new MonthSummary()
             {
-                Month = new DateTime(this.year, this.month, 1),
+                Month = new DateTime(this.Year, this.Month, 1),
                 TotalMeasures = this.Measurements.Count,
                 TotalGlucose = this.Measurements.Sum(m => m.GlucoseValue),
                 TotalInsuline = this.Measurements.Sum(m => m.InsulineUnits)
@@ -81,6 +88,15 @@ namespace Rosier.Glucose.Model
             summary.DailyAverageInsuline = Convert.ToInt32(Math.Round(dayMeasurements.Average(d => d.Sum(m => m.InsulineUnits))));
 
             return summary;
+        }
+
+        /// <summary>
+        /// Removes the measurement.
+        /// </summary>
+        /// <param name="measurement">The measurement.</param>
+        public void RemoveMeasurement(Measurement measurement)
+        {
+            this.Measurements.Remove(measurement);
         }
     }
 }

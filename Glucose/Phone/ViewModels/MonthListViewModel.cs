@@ -46,9 +46,14 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </summary>
         public override async Task LoadDataAsync()
         {
-            var monthlyMeasurements = await StorageManager.LoadMeasurementsAsync(Month, Year);
+            if (App.SelectedMonth == null || App.SelectedMonth.Month != this.Month || App.SelectedMonth.Year != this.Year)
+            {
+                //// load new measurements for selected month, else use previous loaded data
+                App.SelectedMonth = new MonthMeasurements(this.Month, this.Year);
+                await App.SelectedMonth.Load();
+            }
 
-            var viewModels = monthlyMeasurements.Select(m => new MeasurementViewModel(m));
+            var viewModels = App.SelectedMonth.Measurements.Select(m => new MeasurementViewModel(m));
 
             var groupedValues =
                 from value in viewModels
@@ -60,6 +65,15 @@ namespace Rosier.Glucose.Phone.ViewModels
             {
                 this.GroupedMeasurements.Add(group);
             }
+        }
+
+        /// <summary>
+        /// Clears the data.
+        /// </summary>
+        public void ClearData()
+        {
+            App.SelectedMonth = null;
+            App.SelectedMeasurement = null;
         }
     }
 }
