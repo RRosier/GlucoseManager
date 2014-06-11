@@ -46,6 +46,8 @@ namespace Rosier.Glucose.Phone.ViewModels
         /// </summary>
         public override async Task LoadDataAsync()
         {
+            this.GroupedMeasurements.Clear();
+
             if (App.SelectedMonth == null || App.SelectedMonth.Month != this.Month || App.SelectedMonth.Year != this.Year)
             {
                 //// load new measurements for selected month, else use previous loaded data
